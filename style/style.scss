@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-align: center;
+  max-height: fit-content;
 }
 
 body {
@@ -13,11 +15,15 @@ body {
 .logo {
   grid-area: logo;
   background-color: white;
+  // max-width: 500px;
 }
 
 .login {
   grid-area: login;
   background-color: red;
+  display: grid;
+  align-content: space-around;
+  justify-content: center;
 }
 
 .nav {
@@ -28,21 +34,29 @@ body {
 .main {
   grid-area: main;
   background-color: royalblue;
+  align-content: space-around;
+  justify-content: center;
 }
 
 .predlog {
   grid-area: predlog;
   background-color: white;
+  display: grid;
+  align-content: space-around;
+  justify-content: center;
 }
 
 .foo {
   grid-area: foo;
   background-color: greenyellow;
+  align-content: space-around;
+  justify-content: center;
+  bottom: 0;
 }
 
 .container {
   display: grid;
-  grid-template-columns: 3fr 2fr auto auto;
+  grid-template-columns: 1fr 5fr auto auto;
   grid-template-rows: auto;
   grid-template-areas:
     "logo logo login login"
@@ -50,4 +64,21 @@ body {
     "nav nav main main"
     "predlog predlog main main"
     "foo foo foo foo";
+}
+
+// Mobile
+$breakpoint-small: 600px;
+
+@media (max-width: $breakpoint-small) {
+  body {
+    display: grid;
+  }
+
+  .container {
+    grid-template-rows: 50px 100px;
+  }
+
+  .logo {
+    background-color: black;
+  }
 }

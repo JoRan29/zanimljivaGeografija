@@ -3,6 +3,10 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  text-align: center;
+  max-height: -webkit-fit-content;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
 }
 
 body {
@@ -27,6 +31,13 @@ body {
   -ms-grid-column-span: 2;
   grid-area: login;
   background-color: red;
+  display: -ms-grid;
+  display: grid;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .nav {
@@ -45,6 +56,11 @@ body {
   -ms-grid-column-span: 2;
   grid-area: main;
   background-color: royalblue;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .predlog {
@@ -53,6 +69,13 @@ body {
   -ms-grid-column-span: 2;
   grid-area: predlog;
   background-color: white;
+  display: -ms-grid;
+  display: grid;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .foo {
@@ -61,15 +84,35 @@ body {
   -ms-grid-column-span: 4;
   grid-area: foo;
   background-color: greenyellow;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  bottom: 0;
 }
 
 .container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 3fr 2fr auto auto;
-      grid-template-columns: 3fr 2fr auto auto;
+  -ms-grid-columns: 1fr 5fr auto auto;
+      grid-template-columns: 1fr 5fr auto auto;
   -ms-grid-rows: auto;
       grid-template-rows: auto;
       grid-template-areas: "logo logo login login" "nav nav login login" "nav nav main main" "predlog predlog main main" "foo foo foo foo";
+}
+
+@media (max-width: 600px) {
+  body {
+    display: -ms-grid;
+    display: grid;
+  }
+  .container {
+    -ms-grid-rows: 50px 100px;
+        grid-template-rows: 50px 100px;
+  }
+  .logo {
+    background-color: black;
+  }
 }
 /*# sourceMappingURL=style.css.map */
