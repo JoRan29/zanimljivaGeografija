@@ -9,3 +9,45 @@ body {
   background-color: royalblue;
   min-height: 100vh;
 }
+
+.logo {
+  grid-area: logo;
+  background-color: white;
+}
+
+.login {
+  grid-area: login;
+  background-color: red;
+}
+
+.nav {
+  grid-area: nav;
+  background-color: yellow;
+}
+
+.main {
+  grid-area: main;
+  background-color: royalblue;
+}
+
+.predlog {
+  grid-area: predlog;
+  background-color: white;
+}
+
+.foo {
+  grid-area: foo;
+  background-color: greenyellow;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 3fr 2fr auto auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "logo logo login login"
+    "nav nav login login"
+    "nav nav main main"
+    "predlog predlog main main"
+    "foo foo foo foo";
+}
