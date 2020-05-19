@@ -3,77 +3,78 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style/style.css" />
     <title>Zanimljiva Geografija</title>
   </head>
   <body>
-    <div class="container">
-      <div class="logo">
-        <div class="box">
-          <div class="content">
-            <h3>Logo</h3>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Eligendi, sapiente.
-            </p>
-          </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4 logo">
+          <h3>Logo</h3>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi,
+            sapiente.
+          </p>
+        </div>
+        <div class="col-md-8">
+          <h2>Hello, korisnik!</h2>
         </div>
       </div>
-      <div class="nav">
-        <div class="box">
-          <div class="content">
-            <h3>Nav + Text</h3>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Eligendi, sapiente.
-            </p>
-          </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4 nav">
+          <h3>Nav + Text</h3>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi,
+            sapiente.
+          </p>
+        </div>
+        <div class="col-md-8 login">
+          <!-- Forma - Korisnicko ime -->
+          <form id="formKorisnik">
+            <label for="">Izaberi korisnicko ime:</label> <br />
+            <input type="text" id="korisnik" /> <br />
+            <input type="submit" name="" id="" />
+          </form>
         </div>
       </div>
-      <div class="login">
-        <div class="box">
-          <div class="content">
-            <!-- Forma - Korisnicko ime -->
-            <form id="formKorisnik">
-              <label for="">Izaberi korisnicko ime:</label> <br />
-              <input type="text" id="korisnik" /> <br />
-              <input type="submit" name="" id="" />
-            </form>
-          </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4 predlog">
+          <!-- Forma - Predlog (Novi pojam) -->
+          <form id="formPredlog">
+            <label for="">Predlozi novi pojam:</label> <br />
+            <input type="text" id="predlog" /> <br />
+            <select id="select">
+              <option value="Drzava">Drzava</option>
+              <option value="Grad">Grad</option>
+              <option value="Predmet">Predmet</option>
+            </select>
+            <br />
+            <input type="submit" name="" />
+          </form>
+        </div>
+        <div class="col-md-8 main">
+          <h3>Main</h3>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi,
+            sapiente.
+          </p>
         </div>
       </div>
-      <div class="predlog">
-        <div class="box">
-          <div class="content">
-            <!-- Forma - Predlog (Novi pojam) -->
-            <form id="formPredlog">
-              <label for="">Predlozi novi pojam:</label> <br />
-              <input type="text" id="predlog" /> <br />
-              <select id="select">
-                <option value="Drzava">Drzava</option>
-                <option value="Grad">Grad</option>
-                <option value="Predmet">Predmet</option>
-              </select>
-              <br />
-              <input type="submit" name="" />
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="main">
-        <div class="box">
-          <div class="content">
-            <h3>Main</h3>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Eligendi, sapiente.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="foo">
-        <div class="box">
-          <div class="content">
+    </div>
+    <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm foo">
             <h3>Footer</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -82,7 +83,8 @@
           </div>
         </div>
       </div>
-    </div>
+    </footer>
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
@@ -92,11 +94,26 @@
 
     <script>
       // Your web app's Firebase configuration
-      // HERE
+      // YOUR AUTH KEY HERE
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       let db = firebase.firestore();
     </script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
     <script src="app.js"></script>
   </body>
 </html>

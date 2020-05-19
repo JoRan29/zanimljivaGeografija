@@ -11,7 +11,7 @@ class Geografija {
     this.korisnik = kor;
     this.kategorija = kat;
     this.pojam = poj;
-    this.slovo = slo;
+    this.pocetnoSlovo = slo;
     this.zgeografija = db.collection("pojmovi");
   }
   // geteri i seteri
@@ -34,10 +34,10 @@ class Geografija {
     this._pojam = p;
   }
   get slovo() {
-    return this._slovo;
+    return this._pocetnoSlovo;
   }
   set slovo(s) {
-    this._slovo = s;
+    this._pocetnoSlovo = s;
   }
   // metodi
   ispis() {
@@ -51,7 +51,7 @@ class Geografija {
       korisnik: this.korisnik,
       kategorija: this.kategorija,
       pojam: poj,
-      slovo: this.prvoSlovo(poj),
+      pocetnoSlovo: this.prvoSlovo(poj),
       vreme: firebase.firestore.Timestamp.fromDate(date),
     };
 
@@ -59,26 +59,28 @@ class Geografija {
     return response;
   }
   // metod za proveru pojma
-  proveriPojam(poj) {
-    let postoji = false;
+  async proveriPojam(p) {
+    let count = 0;
     this.zgeografija
-      .where("kategorija", "==", this.kategorija)
       .get()
-      .then((snapshot) => {
-        snapshot.forEach((doc) => {
-          console.log("ovde", doc.data().pojam);
-          if (doc.data().pojam === poj) {
-            console.log(`Pojam ${poj} vec postoji!`);
-            postoji = true;
-            return postoji;
+      .then((snap) => {
+        snap.forEach((doc) => {
+          console.log(doc.data().pojam);
+          let pojam = doc.data().pojam;
+          if (pojam == p) {
+            console.log("Exist");
+            count += 1;
+          } else {
+            console.log("Does not exist");
           }
         });
       })
       .catch((err) => {
-        console.error(`Greska prilikom provere pojma: ${err}`);
+        console.error(err);
       });
-    console.log(`Pojam ${poj} ne postoji u bazi jos uvek!`);
-    return postoji;
+    // return false;
+    console.log(count);
+    return count;
   }
   // metod za promenu korisnika
   promeniKorisnika(korisnik) {
@@ -87,9 +89,9 @@ class Geografija {
   }
   // metod za pocetno veliko slovo
   prvoSlovo(poj) {
-    let pocetnoSlovo = poj.slice(0, 1);
-    pocetnoSlovo.toUpperCase();
-    return pocetnoSlovo;
+    let pocetnoSlo = poj.slice(0, 1);
+    pocetnoSlo.toUpperCase();
+    return pocetnoSlo;
   }
 }
 
@@ -116,10 +118,20 @@ formKorisnik.addEventListener("submit", (e) => {
 // dodaj pojam
 formPredlog.addEventListener("submit", (e) => {
   e.preventDefault();
-  if (
-    inputPredlog.value.length &&
-    zgeo.proveriPojam(inputPredlog.value) == false
-  ) {
-    zgeo.dodajPojam(inputPredlog.value);
+  let predlog = inputPredlog.value;
+  console.log("true or false:" + zgeo.proveriPojam(predlog));
+  if (zgeo.proveriPojam(predlog)) {
+    console.log("Rec vec postoji!");
+    return "Postoji";
+  } else {
+    console.log("Novi pojam dodat u bazu!");
+    zgeo.dodajPojam(predlog);
   }
 });
+
+// bez korisnickog imena
+if (!localStorage.korisnik) {
+  console.log(`Izaberi korisnicko ime: `);
+  // document.body.style.innerHTML = "";
+  document.body.style.pointerEvents = "none";
+}
