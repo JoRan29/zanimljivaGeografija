@@ -59,29 +59,7 @@ class Geografija {
     return response;
   }
   // metod za proveru pojma
-  async proveriPojam(p) {
-    let count = 0;
-    this.zgeografija
-      .get()
-      .then((snap) => {
-        snap.forEach((doc) => {
-          console.log(doc.data().pojam);
-          let pojam = doc.data().pojam;
-          if (pojam == p) {
-            console.log("Exist");
-            count += 1;
-          } else {
-            console.log("Does not exist");
-          }
-        });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    // return false;
-    console.log(count);
-    return count;
-  }
+  async proveriPojam(p) {}
   // metod za promenu korisnika
   promeniKorisnika(korisnik) {
     this.korisnik = korisnik;
@@ -118,15 +96,6 @@ formKorisnik.addEventListener("submit", (e) => {
 // dodaj pojam
 formPredlog.addEventListener("submit", (e) => {
   e.preventDefault();
-  let predlog = inputPredlog.value;
-  console.log("true or false:" + zgeo.proveriPojam(predlog));
-  if (zgeo.proveriPojam(predlog)) {
-    console.log("Rec vec postoji!");
-    return "Postoji";
-  } else {
-    console.log("Novi pojam dodat u bazu!");
-    zgeo.dodajPojam(predlog);
-  }
 });
 
 // bez korisnickog imena
