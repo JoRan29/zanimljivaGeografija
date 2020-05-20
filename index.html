@@ -14,29 +14,43 @@
   </head>
   <body>
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-4 logo">
+      <div class="row align-items-start">
+        <div class="col-md-4 logo p-3">
           <h3>Logo</h3>
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi,
             sapiente.
           </p>
         </div>
-        <div class="col-md-8">
-          <h2>Hello, korisnik!</h2>
+        <div class="col-md-8 userbg">
+          <h2 class="p-5" id="pozdrav">
+            Napravi profil da pristupis igri!
+          </h2>
         </div>
       </div>
     </div>
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-4 nav">
-          <h3>Nav + Text</h3>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi,
-            sapiente.
-          </p>
+          <div class="col-md-4">
+            <div class="nav">
+              <nav class="nav flex-column flex-sm-row">
+                <a class="nav-link active" href="#">Home</a>
+                <a class="nav-link" href="#">Pravila</a>
+                <a class="nav-link" href="#">Igraj!</a>
+                <a class="nav-link disabled" href="#">Radovi u toku...</a>
+              </nav>
+            </div>
+          </div>
+
+          <div class="col-md-8">
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Eligendi, sapiente.
+            </p>
+          </div>
         </div>
-        <div class="col-md-8 login">
+        <div class="col-md-8 login p-3">
           <!-- Forma - Korisnicko ime -->
           <form id="formKorisnik">
             <label for="">Izaberi korisnicko ime:</label> <br />
@@ -47,8 +61,8 @@
       </div>
     </div>
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-4 predlog">
+      <div class="row align-items-center">
+        <div class="col-md-4 predlog p-2">
           <!-- Forma - Predlog (Novi pojam) -->
           <form id="formPredlog">
             <label for="">Predlozi novi pojam:</label> <br />
@@ -56,25 +70,71 @@
             <select id="select">
               <option value="Drzava">Drzava</option>
               <option value="Grad">Grad</option>
+              <option value="Reka">Reka</option>
+              <option value="Planina">Planina</option>
+              <option value="Zivotinja">Zivotinja</option>
+              <option value="Biljka">Biljka</option>
               <option value="Predmet">Predmet</option>
             </select>
             <br />
             <input type="submit" name="" />
           </form>
         </div>
-        <div class="col-md-8 main">
+        <div class="col-md-8 main p-3">
           <h3>Main</h3>
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi,
             sapiente.
           </p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">A</th>
+                <th scope="col">S</th>
+                <th scope="col">?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
     <footer>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm foo">
+          <div class="col-sm foo p-2">
             <h3>Footer</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -94,7 +154,7 @@
 
     <script>
       // Your web app's Firebase configuration
-      // YOUR AUTH KEY HERE
+      // YOUR FIREBASE INFO HERE
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       let db = firebase.firestore();
@@ -114,6 +174,6 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
   </body>
 </html>

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -7,16 +8,11 @@
   max-height: -webkit-fit-content;
   max-height: -moz-fit-content;
   max-height: fit-content;
-}
-
-body {
-  display: -ms-grid;
-  display: grid;
-  background-color: gray;
+  font-family: "DM Mono", monospace;
 }
 
 .container {
-  background-color: cyan;
+  padding: 10px;
 }
 
 .logo {
@@ -63,5 +59,9 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.userbg {
+  background-image: url(https://images.pexels.com/photos/346696/pexels-photo-346696.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
 }
 /*# sourceMappingURL=style.css.map */
