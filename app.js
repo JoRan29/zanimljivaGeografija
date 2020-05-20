@@ -42,13 +42,17 @@ formPredlog.addEventListener("submit", (e) => {
   zgeo.kategorija = kategorija;
   let patternReg = /^\S*$/;
   if (patternReg.test(predlog) && predlog.length) {
+    // uvek postavi pocetno veliko slovo
     let predlogCap = zgeo.veliko(predlog);
-    console.log("Predlog odgovara!" + predlogCap);
-    // proveri da nije takav pojam vec u bazi
-    zgeo.proveriPojam(predlogCap);
-    // dodavanje u bazu
-    // zgeo.dodajPojam(predlog, kategorija);
-    // console.log("Novi pojam dodat u bazu!");
+    // proveri da pojam vec ne postojo
+    zgeo.proveriPojam(predlogCap, (data) => {
+      if (data) {
+        zgeo.dodajPojam(predlogCap, kategorija);
+        console.log("Novi pojam dodat u bazu! " + predlogCap);
+      } else {
+        console.log("Pojam vec postoji!");
+      }
+    });
   } else {
     console.log("Predlog ne sme sadrzati prazne karaktere!");
   }
@@ -62,3 +66,13 @@ if (!localStorage.korisnik) {
   document.body.style.pointerEvents = "none";
   alert(`Ne mozete pristupiti stranici bez korisnickog imena!`);
 }
+
+// provera broja unosa
+zgeo.najviseUnosa((data) => {
+  let br = 0;
+  console.log(data);
+  data.forEach((elem, i) => {
+    console.log(elem, i);
+  });
+  console.log(br);
+});

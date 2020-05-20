@@ -47,23 +47,24 @@ export class Geografija {
     return response;
   }
   // metod za proveru pojma
-  async proveriPojam(p) {
+  proveriPojam(p, callback) {
+    let flag = true;
     this.zgeografija
       .where("kategorija", "==", this.kategorija)
       .where("pojam", "==", p)
       .get()
       .then((snap) => {
         snap.forEach((doc) => {
-          console.log(doc.data().pojam);
           let pojam = doc.data().pojam;
-          return true;
+          if (pojam) {
+            flag = false;
+          }
         });
+        callback(flag);
       })
       .catch((err) => {
         console.error(err);
       });
-    console.log(postoji);
-    return false;
   }
   // metod za promenu korisnika
   promeniKorisnika(korisnik) {
@@ -78,6 +79,25 @@ export class Geografija {
   }
   // metod za postavljanje velikog prvog slova od predlozene reci
   veliko(predlog) {
-    return predlog.charAt(0).toUpperCase() + predlog.slice(1);
+    return predlog.charAt(0).toUpperCase() + predlog.slice(1).toLowerCase();
+  }
+  najviseUnosa(callback) {
+    let arr = [];
+    this.zgeografija
+      .orderBy("korisnik", "desc")
+      .get()
+      .then((snap) => {
+        snap.forEach((doc) => {
+          // console.log(doc.data());
+          // console.log(doc.data().korisnik);
+          arr.push(doc.data().korisnik);
+          // console.log(arr);
+        });
+        callback(arr);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    // console.log(arr);
   }
 }

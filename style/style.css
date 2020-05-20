@@ -11,6 +11,11 @@
   font-family: "DM Mono", monospace;
 }
 
+body {
+  background-color: white;
+  min-width: 350px;
+}
+
 .container {
   padding: 10px;
 }
