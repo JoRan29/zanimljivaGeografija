@@ -10,8 +10,17 @@
 }
 
 body {
-  background-image: url(/img/world_main.png);
+  background-image: repeating-linear-gradient(
+    white,
+    rgba(255, 255, 255, 0.233)
+  );
   min-width: 350px;
+  input[type="submit"] {
+    width: 150px;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+  }
 }
 
 .container {
@@ -76,4 +85,8 @@ body {
 
 #poznati {
   list-style: none;
+  li:first-child {
+    font-size: 20px;
+    font-weight: 800;
+  }
 }

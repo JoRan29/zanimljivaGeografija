@@ -84,10 +84,11 @@ zgeo.najviseUnosa((data) => {
   console.log(keysSorted);
   let top5 = keysSorted.reverse().slice(0, 5);
   console.log(top5);
-  let li = `<li>`;
+
   top5.forEach((t) => {
     console.log(t);
+    let li = `<li>`;
     li += `${t}</li></br>`;
+    ulPoznati.innerHTML += li;
   });
-  ulPoznati.innerHTML += li;
 });
