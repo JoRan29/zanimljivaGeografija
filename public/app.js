@@ -28,7 +28,7 @@ let zgeo = new Geografija(korisnik(), "Drzava");
 
 // korisnicko ime
 formKorisnik.addEventListener("submit", (e) => {
-  e.preventDefault();
+  // e.preventDefault();
   zgeo.promeniKorisnika(inputKorisnik.value);
   localStorage.korisnik = inputKorisnik.value;
   formKorisnik.reset();
@@ -64,7 +64,7 @@ formPredlog.addEventListener("submit", (e) => {
 if (!localStorage.korisnik) {
   console.log(`Izaberi korisnicko ime: `);
   // document.body.style.innerHTML = "";
-  document.body.style.pointerEvents = "none";
+  formPredlog.style.pointerEvents = "none";
   alert(`Ne mozete pristupiti stranici bez korisnickog imena!`);
 }
 
