@@ -10,7 +10,7 @@
 }
 
 body {
-  background-color: white;
+  background-image: url(/img/world_main.png);
   min-width: 350px;
 }
 
@@ -27,11 +27,18 @@ body {
   background-color: red;
   align-content: space-around;
   justify-content: center;
+  transition: ease-in-out 0.6s;
 }
 
-// .login:hover {
-//   background-color: blue;
-// }
+.login:hover {
+  background-color: lighten($color: red, $amount: 1%);
+  transform: translate(-5px, -5px);
+  transition: ease-in-out 0.4s;
+  border-radius: 2px;
+  -webkit-box-shadow: 10px 10px 12px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 12px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 12px 0px rgba(0, 0, 0, 0.75);
+}
 
 .nav {
   background-color: yellow;
@@ -48,16 +55,23 @@ body {
   background-color: white;
   align-content: space-around;
   justify-content: center;
+  transition: ease-in-out 0.6s;
+  z-index: 100;
+}
+
+.predlog:hover {
+  transform: translate(5px, -5px);
+  transition: ease-in-out 0.4s;
+  border-radius: 2px;
+  -webkit-box-shadow: -10px 10px 12px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -10px 10px 12px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: -10px 10px 12px 0px rgba(0, 0, 0, 0.75);
 }
 
 .foo {
   background-color: greenyellow;
   align-content: space-around;
   justify-content: center;
-}
-
-.userbg {
-  background-image: url(https://images.pexels.com/photos/346696/pexels-photo-346696.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
 }
 
 #poznati {
