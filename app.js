@@ -69,10 +69,18 @@ if (!localStorage.korisnik) {
 
 // provera broja unosa
 zgeo.najviseUnosa((data) => {
+  let lista = {};
   let br = 0;
+  // data.sort();
   console.log(data);
-  data.forEach((elem, i) => {
-    console.log(elem, i);
+  data.forEach(function (x) {
+    lista[x] = (lista[x] || 0) + 1;
   });
-  console.log(br);
+  console.log(lista);
+  console.log(Object.keys(lista));
+  console.log(Object.keys(lista).sort());
+  let keysSorted = Object.keys(lista).sort(function (a, b) {
+    return lista[a] - lista[b];
+  });
+  console.log(keysSorted);
 });
