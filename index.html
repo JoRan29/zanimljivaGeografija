@@ -53,7 +53,7 @@
         <div class="col-md-8 login p-3">
           <!-- Forma - Korisnicko ime -->
           <form id="formKorisnik">
-            <label for="">Izaberi korisnicko ime:</label> <br />
+            <label for="">Promeni korisnicko ime:</label> <br />
             <input type="text" id="korisnik" /> <br />
             <input type="submit" name="" id="" />
           </form>
@@ -68,11 +68,11 @@
             <label for="">Predlozi novi pojam:</label> <br />
             <input type="text" id="predlog" /> <br />
             <select id="select">
-              <option value="Drzava">Drzava</option>
+              <option value="Država">Država</option>
               <option value="Grad">Grad</option>
               <option value="Reka">Reka</option>
               <option value="Planina">Planina</option>
-              <option value="Zivotinja">Zivotinja</option>
+              <option value="Životinja">Životinja</option>
               <option value="Biljka">Biljka</option>
               <option value="Predmet">Predmet</option>
             </select>
@@ -81,53 +81,14 @@
           </form>
         </div>
         <div class="col-md-8 main p-3">
-          <h3>Main</h3>
+          <h3>Hall of Fame</h3>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi,
-            sapiente.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem,
+            quia.
           </p>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">A</th>
-                <th scope="col">S</th>
-                <th scope="col">?</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
+          <ul id="poznati">
+            <!-- Top 5 lista -->
+          </ul>
         </div>
       </div>
     </div>
@@ -154,7 +115,7 @@
 
     <script>
       // Your web app's Firebase configuration
-      // YOUR FIREBASE INFO HERE
+
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       let db = firebase.firestore();

@@ -8,6 +8,7 @@ let formPredlog = document.querySelector("#formPredlog");
 let inputPredlog = document.querySelector("#predlog");
 let inputSelect = document.querySelector("#select");
 let pozdrav = document.querySelector("#pozdrav");
+let ulPoznati = document.querySelector("#poznati");
 // console.log(pozdrav);
 // console.log(formKorisnik, formPredlog);
 
@@ -70,8 +71,6 @@ if (!localStorage.korisnik) {
 // provera broja unosa
 zgeo.najviseUnosa((data) => {
   let lista = {};
-  let br = 0;
-  // data.sort();
   console.log(data);
   data.forEach(function (x) {
     lista[x] = (lista[x] || 0) + 1;
@@ -83,4 +82,12 @@ zgeo.najviseUnosa((data) => {
     return lista[a] - lista[b];
   });
   console.log(keysSorted);
+  let top5 = keysSorted.reverse().slice(0, 5);
+  console.log(top5);
+  let li = `<li>`;
+  top5.forEach((t) => {
+    console.log(t);
+    li += `${t}</li></br>`;
+  });
+  ulPoznati.innerHTML += li;
 });
