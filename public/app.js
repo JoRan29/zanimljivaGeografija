@@ -11,7 +11,8 @@ let pozdrav = document.querySelector("#pozdrav");
 let ulPoznati = document.querySelector("#poznati");
 let igraKorisnik = document.querySelector("#igraKorisnik");
 let igraInput = document.querySelectorAll(".igraInput");
-console.log(igraInput);
+let igrajBtn = document.querySelector("#igrajBtn");
+console.log(igrajBtn);
 
 // korisnk lokalna memorija
 let korisnik = () => {
@@ -94,19 +95,41 @@ zgeo.najviseUnosa((data) => {
   });
 });
 
+// Igraj Dugme
+igrajBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  igrajBtn.style.pointerEvents = "none";
+  let countdown = 10;
+  let snd = new Audio("beep.mp3");
+  let stopwatch = setInterval(() => {
+    console.log(countdown--);
+    igrajBtn.value = countdown;
+    if (countdown < 5) {
+      igrajBtn.style.color = "red";
+      snd.play();
+    }
+    if (countdown == 0) {
+      clearInterval(stopwatch);
+      igrajBtn.value = "Vreme isteklo!";
+    }
+  }, 1000);
+});
+
 // Korisnik Igra Forma
 igraKorisnik.addEventListener("submit", (e) => {
   e.preventDefault();
+  let skorKorisnik = 0;
+  let odgovorKomp;
   igraInput.forEach((i) => {
-    console.log(i.value);
-    console.log(i.id);
     zgeo.proveriPojam(i.value, i.id, (data) => {
       if (data) {
         console.log(data);
         console.log("Netacno!");
       } else {
         console.log("Pogodak!");
+        skorKorisnik = skorKorisnik + 15;
       }
+      console.log(skorKorisnik);
     });
   });
 });
