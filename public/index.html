@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style/style.css" />
+    <title>Zanimljiva Geografija</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row align-items-start">
+        <div class="col-md-4 logo p-3">
+          <img width="100px" src="world-lr.webp" alt="" />
+          <h3>Zanimljiva Geografija</h3>
+          <p>
+            Radovi u toku!
+          </p>
+        </div>
+        <div class="col-md-8 userbg">
+          <h2 class="p-5" id="pozdrav">
+            Napravi profil da pristupis igri!
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4 nav">
+          <div class="col-md-4">
+            <div class="nav">
+              <nav class="nav flex-column flex-sm-row">
+                <a class="nav-link active" href="#">Home</a>
+                <a class="nav-link" href="#">Pravila</a>
+                <a class="nav-link" href="#">Igraj!</a>
+                <a class="nav-link" href="#">Link</a>
+              </nav>
+            </div>
+          </div>
+
+          <div class="col-md-8 align-items-center p-2">
+            <h3>Hall of Fame</h3>
+            <ul id="poznati">
+              <!-- Top 5 lista -->
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-8 login p-3">
+          <!-- Forma - Korisnicko ime -->
+          <form id="formKorisnik">
+            <label for="">Promeni korisnicko ime:</label> <br />
+            <br />
+            <input type="text" id="korisnik" /> <br />
+            <br />
+            <input type="submit" name="" id="" value="Pošalji" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-4 predlog p-2">
+          <!-- Forma - Predlog (Novi pojam) -->
+          <form id="formPredlog">
+            <label for="">Predlozi novi pojam:</label> <br />
+            <br />
+            <input type="text" id="predlog" /> <br />
+            <select id="select">
+              <option value="Država">Država</option>
+              <option value="Grad">Grad</option>
+              <option value="Reka">Reka</option>
+              <option value="Planina">Planina</option>
+              <option value="Životinja">Životinja</option>
+              <option value="Biljka">Biljka</option>
+              <option value="Predmet">Predmet</option>
+            </select>
+            <br />
+            <br />
+            <input type="submit" name="" value="Pošalji" />
+          </form>
+        </div>
+        <div class="col-md-4 main p-3">
+          <input type="submit" value="Igraj!" id="igrajBtn" />
+          <!-- Form IgraKorisnik -->
+          <form action="" id="igraKorisnik">
+            <input
+              type="text"
+              placeholder="Država"
+              class="igraInput"
+              id="Država"
+            />
+            <br />
+            <input type="text" placeholder="Grad" class="igraInput" id="Grad" />
+            <br />
+            <input type="text" placeholder="Reka" class="igraInput" id="Reka" />
+            <br />
+            <input
+              type="text"
+              placeholder="Planina"
+              class="igraInput"
+              id="Planina"
+            />
+            <br />
+            <input
+              type="text"
+              placeholder="Životinja"
+              class="igraInput"
+              id="Životinja"
+            />
+            <br />
+            <input
+              type="text"
+              placeholder="Biljka"
+              class="igraInput"
+              id="Biljka"
+            />
+            <br />
+            <input
+              type="text"
+              placeholder="Predmet"
+              class="igraInput"
+              id="Predmet"
+            />
+            <br />
+            <input type="submit" id="" value="Pošalji" />
+          </form>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+    <footer>
+      <div class="container-fluid">
+        <div class="row align-items-center foo">
+          <div class="col-sm foo p-2">
+            <h3>Footer</h3>
+            <p>
+              © 2020 ITBootcamp - All rights reserved.
+            </p>
+          </div>
+          <div class="col-md-3 foo">
+            <img width="40px" src="facebook .svg" alt="#" />
+            <img width="40px" src="instagram.svg" alt="#" />
+            <img width="40px" src="twitter.svg" alt="#" />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      let db = firebase.firestore();
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

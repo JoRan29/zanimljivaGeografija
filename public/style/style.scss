@@ -10,10 +10,7 @@
 }
 
 body {
-  background-image: repeating-linear-gradient(
-    white,
-    rgba(255, 255, 255, 0.233)
-  );
+  background-image: url(https://www.digitalartsonline.co.uk/cmsdata/slideshow/3476206/MapPatternFinal1.jpg);
   min-width: 350px;
   input[type="submit"] {
     width: 150px;
@@ -89,4 +86,13 @@ body {
     font-size: 20px;
     font-weight: 800;
   }
+}
+
+#pozdrav {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+}
+
+label {
+  font-size: 20px;
 }

@@ -47,10 +47,10 @@ export class Geografija {
     return response;
   }
   // metod za proveru pojma
-  proveriPojam(p, callback) {
+  proveriPojam(p, k, callback) {
     let flag = true;
     this.zgeografija
-      .where("kategorija", "==", this.kategorija)
+      .where("kategorija", "==", k)
       .where("pojam", "==", p)
       .get()
       .then((snap) => {
@@ -88,16 +88,13 @@ export class Geografija {
       .get()
       .then((snap) => {
         snap.forEach((doc) => {
-          // console.log(doc.data());
           // console.log(doc.data().korisnik);
           arr.push(doc.data().korisnik);
-          // console.log(arr);
         });
         callback(arr);
       })
       .catch((err) => {
         console.error(err);
       });
-    // console.log(arr);
   }
 }
