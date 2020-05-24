@@ -24,7 +24,7 @@
           </p>
         </div>
         <div class="col-md-8 userbg">
-          <h2 class="p-5" id="pozdrav">
+          <h2 class="p-4" id="pozdrav">
             Napravi profil da pristupis igri!
           </h2>
         </div>
@@ -33,26 +33,32 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-4 nav">
-          <div class="col-md-4">
+          <div class="col-md-12 justify-content-start">
             <div class="nav">
-              <nav class="nav flex-column flex-sm-row">
-                <a class="nav-link active" href="#">Home</a>
+              <nav class="nav">
                 <a class="nav-link" href="#">Pravila</a>
-                <a class="nav-link" href="#">Igraj!</a>
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#game">Igraj!</a>
+                <a class="nav-link" href="#formPredlog">Predlog</a>
+                <a class="nav-link active" href="#TopLista">Top Lista</a>
               </nav>
             </div>
           </div>
-
-          <div class="col-md-8 align-items-center p-2">
-            <h3>Hall of Fame</h3>
-            <ul id="poznati">
-              <!-- Top 5 lista -->
-            </ul>
-          </div>
         </div>
         <div class="col-md-8 login p-3">
-          <input type="submit" value="Igraj!" id="igrajBtn" />
+          <!-- Izaberi/Promeni Korisnicko Ime -->
+          <!-- Forma - Korisnicko ime -->
+          <form id="formKorisnik">
+            <label for="">Želiš da promeniš korisničko ime?</label>
+            <input type="text" id="korisnik" placeholder="" /> <br />
+            <input type="submit" name="" id="" value="Pošalji" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- GAME -->
+    <div class="container-fluid game" id="game">
+      <div class="row align-items-center">
+        <div class="col-md-5 game p-4">
           <!-- Form IgraKorisnik -->
           <form action="" id="igraKorisnik">
             <input
@@ -94,9 +100,13 @@
               id="Predmet"
             />
             <br />
-            <input type="submit" id="" value="Pošalji" />
           </form>
         </div>
+        <div class="col-md-2 game p-4">
+          <input type="submit" value="Igraj!" id="igrajBtn" /> <br />
+          <span class="vs"></span>
+        </div>
+        <div class="col-md-5 game p-4">Komp</div>
       </div>
     </div>
     <div class="container-fluid">
@@ -104,9 +114,9 @@
         <div class="col-md-4 predlog p-2">
           <!-- Forma - Predlog (Novi pojam) -->
           <form id="formPredlog">
-            <label for="">Predlozi novi pojam:</label> <br />
+            <label for="">Predloži novi pojam:</label> <br />
             <br />
-            <input type="text" id="predlog" /> <br />
+            <span>Kategorija:</span>
             <select id="select">
               <option value="Država">Država</option>
               <option value="Grad">Grad</option>
@@ -118,20 +128,21 @@
             </select>
             <br />
             <br />
+            <span>Pojam:</span>
+            <input type="text" id="predlog" /> <br />
+
+            <br />
+            <br />
             <input type="submit" name="" value="Pošalji" />
           </form>
         </div>
-        <div class="col-md-4 main p-3">
-          <!-- Forma - Korisnicko ime -->
-          <form id="formKorisnik">
-            <label for="">Promeni korisnicko ime:</label> <br />
-            <br />
-            <input type="text" id="korisnik" /> <br />
-            <br />
-            <input type="submit" name="" id="" value="Pošalji" />
-          </form>
+        <div class="col-md-4 p-3">hello</div>
+        <div class="col-md-4 main p-3" id="TopLista">
+          <h3>Top Lista</h3>
+          <ul id="poznati">
+            <!-- Top 5 lista -->
+          </ul>
         </div>
-        <div class="col-md-4"></div>
       </div>
     </div>
     <footer>

@@ -48,13 +48,43 @@ body {
 
 .nav {
   background-color: yellow;
+  margin: auto;
+  padding: 10px;
 }
 
 .main {
-  background-color: royalblue;
+  background-color: yellow;
   align-content: space-around;
   justify-content: center;
   min-height: 300px;
+}
+
+.game {
+  background-color: royalblue;
+  input[type="text"]::placeholder {
+    color: rgba(0, 0, 0, 0.7);
+  }
+  input[type="text"] {
+    font-size: 30px;
+    outline: none;
+    background: transparent;
+    border: none;
+    border-bottom: solid 2px black;
+    transition: ease-in-out 0.4s;
+    color: black;
+  }
+  input[type="text"]:focus {
+    width: 80%;
+  }
+  input[type="text"]:hover {
+    width: 80%;
+  }
+  input[type="submit"] {
+    width: 170px;
+    min-width: fit-content;
+    font-size: 20px;
+    background-color: yellowgreen;
+  }
 }
 
 .predlog {
@@ -90,9 +120,29 @@ body {
 
 #pozdrav {
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-color: black;
+  color: white;
+  font-weight: 900;
+  font-size: 50px;
 }
 
 label {
   font-size: 20px;
+}
+
+#formKorisnik {
+  input[type="text"] {
+    outline: none;
+    background: transparent;
+    border: none;
+    border-bottom: solid 2px black;
+    width: 50px;
+    transition: ease-in-out 0.4s;
+  }
+  input[type="text"]:focus {
+    width: 200px;
+  }
+  input[type="text"]:hover {
+    width: 200px;
+  }
 }

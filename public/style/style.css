@@ -56,16 +56,66 @@ body input[type="submit"] {
 
 .nav {
   background-color: yellow;
+  margin: auto;
+  padding: 10px;
 }
 
 .main {
-  background-color: royalblue;
+  background-color: yellow;
   -ms-flex-line-pack: distribute;
       align-content: space-around;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   min-height: 300px;
+}
+
+.game {
+  background-color: royalblue;
+}
+
+.game input[type="text"]::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.game input[type="text"]:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.game input[type="text"]::-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.game input[type="text"]::placeholder {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.game input[type="text"] {
+  font-size: 30px;
+  outline: none;
+  background: transparent;
+  border: none;
+  border-bottom: solid 2px black;
+  -webkit-transition: ease-in-out 0.4s;
+  transition: ease-in-out 0.4s;
+  color: black;
+}
+
+.game input[type="text"]:focus {
+  width: 80%;
+}
+
+.game input[type="text"]:hover {
+  width: 80%;
+}
+
+.game input[type="submit"] {
+  width: 170px;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  font-size: 20px;
+  background-color: yellowgreen;
 }
 
 .predlog {
@@ -110,10 +160,31 @@ body input[type="submit"] {
 
 #pozdrav {
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-color: black;
+  color: white;
+  font-weight: 900;
+  font-size: 50px;
 }
 
 label {
   font-size: 20px;
+}
+
+#formKorisnik input[type="text"] {
+  outline: none;
+  background: transparent;
+  border: none;
+  border-bottom: solid 2px black;
+  width: 50px;
+  -webkit-transition: ease-in-out 0.4s;
+  transition: ease-in-out 0.4s;
+}
+
+#formKorisnik input[type="text"]:focus {
+  width: 200px;
+}
+
+#formKorisnik input[type="text"]:hover {
+  width: 200px;
 }
 /*# sourceMappingURL=style.css.map */

@@ -12,6 +12,7 @@ let ulPoznati = document.querySelector("#poznati");
 let igraKorisnik = document.querySelector("#igraKorisnik");
 let igraInput = document.querySelectorAll(".igraInput");
 let igrajBtn = document.querySelector("#igrajBtn");
+let vs = document.querySelector(".vs");
 console.log(igrajBtn);
 
 // korisnk lokalna memorija
@@ -20,7 +21,8 @@ let korisnik = () => {
     pozdrav.innerHTML = `Hello, ${localStorage.korisnik}!`;
     return localStorage.korisnik;
   } else {
-    pozdrav.innerHTML = `Morate se prijaviti da nastavite igru!`;
+    pozdrav.innerHTML = `Morate se prijaviti da nastavite igru!
+    `;
     return "anonimus";
   }
 };
@@ -35,6 +37,9 @@ formKorisnik.addEventListener("submit", (e) => {
   localStorage.korisnik = inputKorisnik.value;
   formKorisnik.reset();
 });
+
+// vs
+vs.innerHTML = `${localStorage.korisnik} VS Kompjutera`;
 
 // dodaj pojam
 formPredlog.addEventListener("submit", (e) => {
@@ -98,8 +103,8 @@ zgeo.najviseUnosa((data) => {
 // Igraj Dugme
 igrajBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  igrajBtn.style.pointerEvents = "none";
   let countdown = 10;
+  igrajBtn.style.pointerEvents = "none";
   let snd = new Audio("beep.mp3");
   let stopwatch = setInterval(() => {
     console.log(countdown--);
@@ -111,6 +116,11 @@ igrajBtn.addEventListener("click", (e) => {
     if (countdown == 0) {
       clearInterval(stopwatch);
       igrajBtn.value = "Vreme isteklo!";
+      igrajBtn.style.pointerEvents = "auto";
+      setTimeout(() => {
+        igrajBtn.value = "Igraj Ponovo!";
+        igrajBtn.style.color = "black";
+      }, 2000);
     }
   }, 1000);
 });
@@ -118,18 +128,22 @@ igrajBtn.addEventListener("click", (e) => {
 // Korisnik Igra Forma
 igraKorisnik.addEventListener("submit", (e) => {
   e.preventDefault();
+  let kategorija;
   let skorKorisnik = 0;
   let odgovorKomp;
   igraInput.forEach((i) => {
     zgeo.proveriPojam(i.value, i.id, (data) => {
       if (data) {
-        console.log(data);
-        console.log("Netacno!");
+        // console.log(data);
+        // console.log("Netacno!");
       } else {
         console.log("Pogodak!");
         skorKorisnik = skorKorisnik + 15;
       }
-      console.log(skorKorisnik);
+      // console.log(skorKorisnik);
     });
+  });
+  zgeo.uzmiPojam("Država", (arr) => {
+    console.log(zgeo.random(arr));
   });
 });

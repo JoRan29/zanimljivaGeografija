@@ -97,4 +97,24 @@ export class Geografija {
         console.error(err);
       });
   }
+  random(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+  uzmiPojam(k, callback) {
+    let arr = [];
+    this.zgeografija
+      .where("kategorija", "==", k)
+      .get()
+      .then((snap) => {
+        snap.forEach((doc) => {
+          let pojam = doc.data().pojam;
+          arr.push(pojam);
+          // console.log(arr);
+        });
+        callback(arr);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 }
