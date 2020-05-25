@@ -11,12 +11,18 @@
 
 body {
   background-image: url(https://www.digitalartsonline.co.uk/cmsdata/slideshow/3476206/MapPatternFinal1.jpg);
-  min-width: 350px;
+  min-width: 520px;
   input[type="submit"] {
     width: 150px;
     border: none;
     outline: none;
     border-radius: 2px;
+  }
+  .vs,
+  .vs2 {
+    font-size: 30px;
+    text-decoration: underline;
+    padding-bottom: 20px;
   }
 }
 
@@ -27,6 +33,7 @@ body {
 .logo {
   grid-area: logo;
   background-color: white;
+  text-decoration: underline;
 }
 
 .login {
@@ -34,6 +41,7 @@ body {
   align-content: space-around;
   justify-content: center;
   transition: ease-in-out 0.6s;
+  z-index: 100;
 }
 
 .login:hover {
@@ -50,6 +58,13 @@ body {
   background-color: yellow;
   margin: auto;
   padding: 10px;
+  .nav-link {
+    transition: ease-in-out 0.4s;
+  }
+  .nav-link:hover {
+    transform: translate(-5px, -5px);
+    transition: ease-in-out 0.4s;
+  }
 }
 
 .main {
@@ -75,15 +90,48 @@ body {
   }
   input[type="text"]:focus {
     width: 80%;
+    transition: ease-in-out 0.4s;
   }
   input[type="text"]:hover {
     width: 80%;
+    transition: ease-in-out 0.4s;
   }
   input[type="submit"] {
+    margin-top: 10px;
     width: 170px;
     min-width: fit-content;
     font-size: 20px;
     background-color: yellowgreen;
+    transition: ease-in-out 0.4s;
+  }
+  input[type="submit"]:hover {
+    transform: scale(1.1);
+    transition: ease-in-out 0.4s;
+  }
+  input[type="submit"]:focus {
+    transform: scale(1.1);
+    transition: ease-in-out 0.4s;
+  }
+  form#igraKomp {
+    input[type="text"]::placeholder {
+      color: rgba(0, 0, 0, 0.4);
+    }
+    input[type="text"] {
+      user-select: none;
+      pointer-events: none;
+    }
+    margin-bottom: 37px;
+  }
+  #slovo {
+    background-color: yellowgreen;
+    margin: auto;
+    max-width: 200px;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 2px;
+  }
+  #igraKorisnik {
+    pointer-events: none;
   }
 }
 
@@ -93,6 +141,28 @@ body {
   justify-content: center;
   transition: ease-in-out 0.6s;
   z-index: 100;
+  input[type="text"] {
+    width: 50px;
+    font-size: 30px;
+    outline: none;
+    background: transparent;
+    border: none;
+    border-bottom: solid 2px black;
+    transition: ease-in-out 0.4s;
+    color: black;
+  }
+  input[type="text"]:focus {
+    width: 50%;
+    transition: ease-in-out 0.4s;
+  }
+  input[type="text"]:hover {
+    width: 50%;
+    transition: ease-in-out 0.4s;
+  }
+  select {
+    border-radius: 3px;
+    background-color: royalblue;
+  }
 }
 
 .predlog:hover {
@@ -108,13 +178,25 @@ body {
   background-color: greenyellow;
   align-content: space-around;
   justify-content: center;
+  padding: 10px;
 }
 
-#poznati {
-  list-style: none;
-  li:first-child {
-    font-size: 20px;
-    font-weight: 800;
+#TopLista {
+  h3 {
+    text-decoration: underline;
+  }
+  #poznati {
+    list-style: none;
+    li:first-child {
+      font-size: 23px;
+      font-weight: 800;
+      margin-top: 35px;
+      margin-bottom: 15px;
+    }
+    li {
+      background-color: rgba(173, 216, 230, 0.774);
+      border-radius: 2px;
+    }
   }
 }
 
@@ -145,4 +227,32 @@ label {
   input[type="text"]:hover {
     width: 200px;
   }
+}
+
+#rez {
+  font-size: 20px;
+}
+
+// PopUp
+
+#popup {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  padding: 50px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.301);
+  background: #fff;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+  border-radius: 5px;
+  z-index: 300;
+}
+
+#popup.active {
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s;
 }

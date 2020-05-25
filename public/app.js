@@ -12,8 +12,15 @@ let ulPoznati = document.querySelector("#poznati");
 let igraKorisnik = document.querySelector("#igraKorisnik");
 let igraInput = document.querySelectorAll(".igraInput");
 let igrajBtn = document.querySelector("#igrajBtn");
+let igraKomp = document.querySelector("#igraKomp");
+let kompInput = document.querySelectorAll(".kompInput");
 let vs = document.querySelector(".vs");
-console.log(igrajBtn);
+let slovo = document.querySelector("#slovo");
+let pravila = document.querySelector("#pravila");
+let close = document.querySelector("#close");
+let zavrsiIgru = document.querySelector("#zavrsiIgru");
+let skor = document.querySelector("#skor");
+// console.log(igrajBtn);
 
 // korisnk lokalna memorija
 let korisnik = () => {
@@ -39,7 +46,7 @@ formKorisnik.addEventListener("submit", (e) => {
 });
 
 // vs
-vs.innerHTML = `${localStorage.korisnik} VS Kompjutera`;
+vs.innerHTML = `${localStorage.korisnik}`;
 
 // dodaj pojam
 formPredlog.addEventListener("submit", (e) => {
@@ -73,10 +80,12 @@ if (!localStorage.korisnik) {
   // document.body.style.innerHTML = "";
   formPredlog.style.pointerEvents = "none";
   formPredlog.style.opacity = "0.5";
+  igraKorisni.style.pointerEvents = "none";
+  igraKorisnik.style.opacity = "0.5";
   alert(`Ne mozete pristupiti stranici bez korisnickog imena!`);
 }
 
-// provera broja unosa
+// provera broja unosa - top lista
 zgeo.najviseUnosa((data) => {
   let lista = {};
   data.forEach(function (x) {
@@ -101,23 +110,110 @@ zgeo.najviseUnosa((data) => {
 });
 
 // Igraj Dugme
+let pocetnoSlovo;
+
 igrajBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  let countdown = 10;
+  // Odgovori
+  let odgovoriKomp = [];
+  let odgovoriKor = [];
+  // Podesi Skor
+  let kompSkor = 0;
+  let skorKorisnik = 0;
+  // Izaberi Slovo
+  let abeceda = "ABCČĆDĐEFGHIJKLMNOPRSTUVZŽ".split("");
+  pocetnoSlovo = zgeo.random(abeceda);
+  slovo.innerHTML = pocetnoSlovo;
+  // Podesi odbrojavanje
+  let countdown = 60;
   igrajBtn.style.pointerEvents = "none";
+  igraKorisnik.style.pointerEvents = "auto";
+  igraKorisnik.reset();
   let snd = new Audio("beep.mp3");
+  // Odbrojavanje
   let stopwatch = setInterval(() => {
-    console.log(countdown--);
+    countdown--;
     igrajBtn.value = countdown;
     if (countdown < 5) {
       igrajBtn.style.color = "red";
+      igrajBtn.style.fontWeight = "900";
       snd.play();
     }
     if (countdown == 0) {
       clearInterval(stopwatch);
       igrajBtn.value = "Vreme isteklo!";
-      igrajBtn.style.pointerEvents = "auto";
+      // Komp Dobije Odgovore
+      kompInput.forEach((i) => {
+        zgeo.uzmiPojam(i.id, pocetnoSlovo, (d) => {
+          // console.log(zgeo.random(d));
+          // console.log(i);
+          let pojam = zgeo.random(d);
+          if (pojam != undefined) {
+            i.value = `${pojam}`;
+            // kompSkor = kompSkor + 15;
+            odgovoriKomp.push(pojam);
+            console.log(kompSkor);
+          } else {
+            i.value = `:(`;
+          }
+        });
+      });
+      // Igrac submit odgovore - Korisnik Forma
+      igraInput.forEach((i) => {
+        console.log(i.value);
+        if (i.value != "" && i.value.startsWith(pocetnoSlovo)) {
+          zgeo.proveriPojam(i.value, i.id, (data) => {
+            if (data) {
+              // console.log(data);
+              console.log("Netacno!");
+            } else {
+              console.log("Pogodak!");
+              // skorKorisnik = skorKorisnik + 15;
+              odgovoriKor.push(i.value);
+            }
+            console.log(skorKorisnik);
+          });
+        }
+      });
+      // Racunanje rezultata
+      skor.innerHTML = `Računamo konačan rezultat...`;
       setTimeout(() => {
+        // Rezultat
+        kompSkor = odgovoriKomp.length * 15;
+        skorKorisnik = odgovoriKor.length * 15;
+        odgovoriKomp.forEach((odg) => {
+          console.log(odg);
+          odgovoriKor.forEach((o) => {
+            if (odg == o) {
+              kompSkor = kompSkor - 5;
+              skorKorisnik = skorKorisnik - 5;
+              odgovoriKomp.pop(odg);
+            }
+          });
+        });
+        if (skorKorisnik > kompSkor) {
+          skor.innerHTML =
+            `${localStorage.korisnik} je osvojio/la ${skorKorisnik} poena!` +
+            `<div> Kompjuter je osvojio ${kompSkor} poena!</div>` +
+            `Pobednik je ${localStorage.korisnik}! Čestitamo!`;
+        } else if (kompSkor > skorKorisnik) {
+          skor.innerHTML =
+            `${localStorage.korisnik} je osvojio/la ${skorKorisnik} poena!` +
+            `<div> Kompjuter je osvojio ${kompSkor} poena!</div>` +
+            `Pobednik je kompjuter - Više sreće drugi put!`;
+        } else {
+          skor.innerHTML =
+            `${localStorage.korisnik} je osvojio/la ${skorKorisnik} poena!` +
+            `<div> Kompjuter je osvojio ${kompSkor} poena!</div>` +
+            `<div id="rez">Rezultat je nerešen - Pokušajte ponovo!</div>`;
+        }
+      }, 1000);
+      // Stilizovanje
+      igrajBtn.style.fontWeight = "500";
+      igraKorisnik.style.pointerEvents = "none";
+      // Igraj Ponovo
+      setTimeout(() => {
+        igrajBtn.style.pointerEvents = "auto";
         igrajBtn.value = "Igraj Ponovo!";
         igrajBtn.style.color = "black";
       }, 2000);
@@ -128,22 +224,24 @@ igrajBtn.addEventListener("click", (e) => {
 // Korisnik Igra Forma
 igraKorisnik.addEventListener("submit", (e) => {
   e.preventDefault();
-  let kategorija;
-  let skorKorisnik = 0;
-  let odgovorKomp;
-  igraInput.forEach((i) => {
-    zgeo.proveriPojam(i.value, i.id, (data) => {
-      if (data) {
-        // console.log(data);
-        // console.log("Netacno!");
-      } else {
-        console.log("Pogodak!");
-        skorKorisnik = skorKorisnik + 15;
-      }
-      // console.log(skorKorisnik);
-    });
-  });
-  zgeo.uzmiPojam("Država", (arr) => {
-    console.log(zgeo.random(arr));
-  });
+});
+
+// zavrsi igru
+// zavrsiIgru.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   igraKorisnik.submit();
+// });
+
+// popup - pravila
+let toggle = () => {
+  let popup = document.getElementById("popup");
+  popup.classList.toggle("active");
+};
+
+pravila.addEventListener("click", () => {
+  toggle();
+});
+
+close.addEventListener("click", () => {
+  toggle();
 });

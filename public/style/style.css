@@ -13,7 +13,7 @@
 
 body {
   background-image: url(https://www.digitalartsonline.co.uk/cmsdata/slideshow/3476206/MapPatternFinal1.jpg);
-  min-width: 350px;
+  min-width: 520px;
 }
 
 body input[type="submit"] {
@@ -23,6 +23,13 @@ body input[type="submit"] {
   border-radius: 2px;
 }
 
+body .vs,
+body .vs2 {
+  font-size: 30px;
+  text-decoration: underline;
+  padding-bottom: 20px;
+}
+
 .container {
   padding: 10px;
 }
@@ -30,6 +37,7 @@ body input[type="submit"] {
 .logo {
   grid-area: logo;
   background-color: white;
+  text-decoration: underline;
 }
 
 .login {
@@ -41,6 +49,7 @@ body input[type="submit"] {
           justify-content: center;
   -webkit-transition: ease-in-out 0.6s;
   transition: ease-in-out 0.6s;
+  z-index: 100;
 }
 
 .login:hover {
@@ -58,6 +67,18 @@ body input[type="submit"] {
   background-color: yellow;
   margin: auto;
   padding: 10px;
+}
+
+.nav .nav-link {
+  -webkit-transition: ease-in-out 0.4s;
+  transition: ease-in-out 0.4s;
+}
+
+.nav .nav-link:hover {
+  -webkit-transform: translate(-5px, -5px);
+          transform: translate(-5px, -5px);
+  -webkit-transition: ease-in-out 0.4s;
+  transition: ease-in-out 0.4s;
 }
 
 .main {
@@ -103,19 +124,81 @@ body input[type="submit"] {
 
 .game input[type="text"]:focus {
   width: 80%;
+  -webkit-transition: ease-in-out 0.4s;
+  transition: ease-in-out 0.4s;
 }
 
 .game input[type="text"]:hover {
   width: 80%;
+  -webkit-transition: ease-in-out 0.4s;
+  transition: ease-in-out 0.4s;
 }
 
 .game input[type="submit"] {
+  margin-top: 10px;
   width: 170px;
   min-width: -webkit-fit-content;
   min-width: -moz-fit-content;
   min-width: fit-content;
   font-size: 20px;
   background-color: yellowgreen;
+  -webkit-transition: ease-in-out 0.4s;
+  transition: ease-in-out 0.4s;
+}
+
+.game input[type="submit"]:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: ease-in-out 0.4s;
+  transition: ease-in-out 0.4s;
+}
+
+.game input[type="submit"]:focus {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: ease-in-out 0.4s;
+  transition: ease-in-out 0.4s;
+}
+
+.game form#igraKomp {
+  margin-bottom: 37px;
+}
+
+.game form#igraKomp input[type="text"]::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.game form#igraKomp input[type="text"]:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.game form#igraKomp input[type="text"]::-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.game form#igraKomp input[type="text"]::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.game form#igraKomp input[type="text"] {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+
+.game #slovo {
+  background-color: yellowgreen;
+  margin: auto;
+  max-width: 200px;
+  font-size: 40px;
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+.game #igraKorisnik {
+  pointer-events: none;
 }
 
 .predlog {
@@ -128,6 +211,35 @@ body input[type="submit"] {
   -webkit-transition: ease-in-out 0.6s;
   transition: ease-in-out 0.6s;
   z-index: 100;
+}
+
+.predlog input[type="text"] {
+  width: 50px;
+  font-size: 30px;
+  outline: none;
+  background: transparent;
+  border: none;
+  border-bottom: solid 2px black;
+  -webkit-transition: ease-in-out 0.4s;
+  transition: ease-in-out 0.4s;
+  color: black;
+}
+
+.predlog input[type="text"]:focus {
+  width: 50%;
+  -webkit-transition: ease-in-out 0.4s;
+  transition: ease-in-out 0.4s;
+}
+
+.predlog input[type="text"]:hover {
+  width: 50%;
+  -webkit-transition: ease-in-out 0.4s;
+  transition: ease-in-out 0.4s;
+}
+
+.predlog select {
+  border-radius: 3px;
+  background-color: royalblue;
 }
 
 .predlog:hover {
@@ -147,15 +259,27 @@ body input[type="submit"] {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding: 10px;
 }
 
-#poznati {
+#TopLista h3 {
+  text-decoration: underline;
+}
+
+#TopLista #poznati {
   list-style: none;
 }
 
-#poznati li:first-child {
-  font-size: 20px;
+#TopLista #poznati li:first-child {
+  font-size: 23px;
   font-weight: 800;
+  margin-top: 35px;
+  margin-bottom: 15px;
+}
+
+#TopLista #poznati li {
+  background-color: rgba(173, 216, 230, 0.774);
+  border-radius: 2px;
 }
 
 #pozdrav {
@@ -186,5 +310,35 @@ label {
 
 #formKorisnik input[type="text"]:hover {
   width: 200px;
+}
+
+#rez {
+  font-size: 20px;
+}
+
+#popup {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 500px;
+  padding: 50px;
+  -webkit-box-shadow: 0 5px 30px rgba(0, 0, 0, 0.301);
+          box-shadow: 0 5px 30px rgba(0, 0, 0, 0.301);
+  background: #fff;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border-radius: 5px;
+  z-index: 300;
+}
+
+#popup.active {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 /*# sourceMappingURL=style.css.map */

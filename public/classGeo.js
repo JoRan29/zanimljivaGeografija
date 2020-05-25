@@ -100,10 +100,11 @@ export class Geografija {
   random(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
   }
-  uzmiPojam(k, callback) {
+  uzmiPojam(k, ps, callback) {
     let arr = [];
     this.zgeografija
       .where("kategorija", "==", k)
+      .where("pocetnoSlovo", "==", ps)
       .get()
       .then((snap) => {
         snap.forEach((doc) => {
