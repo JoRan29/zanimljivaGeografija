@@ -26,7 +26,9 @@ let username = document.querySelector("#username");
 // korisnk lokalna memorija
 let korisnik = () => {
   if (localStorage.korisnik) {
-    pozdrav.innerHTML = `Hello, ${localStorage.korisnik}!`;
+    pozdrav.innerHTML =
+      `Zdravo, ${localStorage.korisnik}!` +
+      `<div id="poruka"> Nadamo se da ćete se lepo zabaviti! </div>`;
     return localStorage.korisnik;
   } else {
     pozdrav.innerHTML = `Morate se prijaviti da nastavite igru!
@@ -124,6 +126,7 @@ let pocetnoSlovo;
 
 igrajBtn.addEventListener("click", (e) => {
   e.preventDefault();
+  igraKomp.reset();
   // Odgovori
   let odgovoriKomp = [];
   let odgovoriKor = [];
@@ -180,16 +183,16 @@ igrajBtn.addEventListener("click", (e) => {
       });
       // Igrac submit odgovore - Korisnik Forma
       igraInput.forEach((i) => {
-        console.log(i.value);
-        if (i.value != "" && i.value.startsWith(pocetnoSlovo)) {
-          zgeo.proveriPojam(i.value, i.id, (data) => {
+        let veliko = zgeo.veliko(i.value);
+        console.log(veliko);
+        if (veliko != "" && veliko.startsWith(pocetnoSlovo)) {
+          zgeo.proveriPojam(veliko, i.id, (data) => {
             if (data) {
               console.log("Netacno!");
             } else {
               console.log("Pogodak!");
-              odgovoriKor.push(i.value);
+              odgovoriKor.push(veliko);
             }
-            console.log(skorKorisnik);
           });
         }
       });
@@ -250,6 +253,7 @@ igrajBtn.addEventListener("click", (e) => {
         igrajBtn.style.pointerEvents = "auto";
         igrajBtn.value = "Igraj Ponovo!";
         igrajBtn.style.color = "black";
+        igrajBtn.style.fontSize = "20px";
       }, 2000);
     }
   }, 1000);

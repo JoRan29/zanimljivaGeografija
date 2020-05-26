@@ -217,6 +217,23 @@ body ul {
   pointer-events: none;
 }
 
+.game #igraKorisnik #zavrsiIgru {
+  cursor: pointer;
+}
+
+.game #igrajBtn {
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-size: 30px;
+  cursor: pointer;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 13px 30px;
+  text-align: center;
+}
+
 #skor {
   background-color: red;
   min-height: 454px;
@@ -271,6 +288,11 @@ body ul {
 .predlog select {
   border-radius: 3px;
   background-color: royalblue;
+  cursor: pointer;
+}
+
+.predlog input[type="submit"] {
+  cursor: pointer;
 }
 
 .predlog:hover {
@@ -323,6 +345,12 @@ body ul {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  margin-top: 30px;
+  text-align: center;
+}
+
+#poruka {
+  font-size: 30px;
 }
 
 label {
@@ -345,6 +373,10 @@ label {
 
 #formKorisnik input[type="text"]:hover {
   width: 200px;
+}
+
+#formKorisnik input[type="submit"] {
+  cursor: pointer;
 }
 
 #rez {

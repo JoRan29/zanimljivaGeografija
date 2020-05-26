@@ -141,6 +141,19 @@ body {
   }
   #igraKorisnik {
     pointer-events: none;
+    #zavrsiIgru {
+      cursor: pointer;
+    }
+  }
+  #igrajBtn {
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-size: 30px;
+    cursor: pointer;
+    width: fit-content;
+    padding: 13px 30px;
+    text-align: center;
   }
 }
 
@@ -179,6 +192,10 @@ body {
   select {
     border-radius: 3px;
     background-color: royalblue;
+    cursor: pointer;
+  }
+  input[type="submit"] {
+    cursor: pointer;
   }
 }
 
@@ -224,6 +241,12 @@ body {
   font-weight: 900;
   font-size: 50px;
   user-select: none;
+  margin-top: 30px;
+  text-align: center;
+}
+
+#poruka {
+  font-size: 30px;
 }
 
 label {
@@ -244,6 +267,9 @@ label {
   }
   input[type="text"]:hover {
     width: 200px;
+  }
+  input[type="submit"] {
+    cursor: pointer;
   }
 }
 
