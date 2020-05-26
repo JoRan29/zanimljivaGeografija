@@ -94,6 +94,8 @@ if (
   igraKorisnik.style.pointerEvents = "none";
   igraKorisnik.style.opacity = "0.5";
   username.innerHTML = "Izaberi korisničko ime:";
+  igrajBtn.style.pointerEvents = "none";
+  igrajBtn.style.backgroundColor = "gray";
   alert(`Ne mozete pristupiti stranici bez korisnickog imena!`);
 }
 

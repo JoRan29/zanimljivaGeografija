@@ -57,7 +57,7 @@ body ul {
 }
 
 .login {
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.904);
   -ms-flex-line-pack: distribute;
       align-content: space-around;
   -webkit-box-pack: center;
@@ -80,7 +80,7 @@ body ul {
 }
 
 .nav {
-  background-color: yellow;
+  background-color: rgba(255, 255, 0, 0.63);
   margin: auto;
   padding: 10px;
 }
@@ -98,7 +98,7 @@ body ul {
 }
 
 .main {
-  background-color: yellow;
+  background-color: rgba(255, 255, 0, 0.7);
   -ms-flex-line-pack: distribute;
       align-content: space-around;
   -webkit-box-pack: center;
@@ -235,7 +235,7 @@ body ul {
 }
 
 #skor {
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.901);
   min-height: 454px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -250,7 +250,7 @@ body ul {
 }
 
 .predlog {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.925);
   -ms-flex-line-pack: distribute;
       align-content: space-around;
   -webkit-box-pack: center;
@@ -296,6 +296,7 @@ body ul {
 }
 
 .predlog:hover {
+  background-color: white;
   -webkit-transform: translate(5px, -5px);
           transform: translate(5px, -5px);
   -webkit-transition: ease-in-out 0.4s;
@@ -331,7 +332,7 @@ body ul {
 }
 
 #TopLista #poznati li {
-  background-color: rgba(173, 216, 230, 0.774);
+  background-color: rgba(255, 255, 255, 0.715);
   border-radius: 2px;
 }
 
@@ -351,6 +352,7 @@ body ul {
 
 #poruka {
   font-size: 30px;
+  color: red;
 }
 
 label {
