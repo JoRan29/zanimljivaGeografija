@@ -28,6 +28,18 @@ body .vs2 {
   font-size: 30px;
   text-decoration: underline;
   padding-bottom: 20px;
+  font-weight: 600;
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+body ul {
+  list-style: none;
 }
 
 .container {
@@ -38,6 +50,10 @@ body .vs2 {
   grid-area: logo;
   background-color: white;
   text-decoration: underline;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .login {
@@ -201,6 +217,21 @@ body .vs2 {
   pointer-events: none;
 }
 
+#skor {
+  background-color: red;
+  min-height: 454px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .predlog {
   background-color: white;
   -ms-flex-line-pack: distribute;
@@ -288,6 +319,10 @@ body .vs2 {
   color: white;
   font-weight: 900;
   font-size: 50px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 label {
@@ -313,7 +348,7 @@ label {
 }
 
 #rez {
-  font-size: 20px;
+  font-size: 30px;
 }
 
 #popup {

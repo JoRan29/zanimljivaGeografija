@@ -23,6 +23,14 @@ body {
     font-size: 30px;
     text-decoration: underline;
     padding-bottom: 20px;
+    font-weight: 600;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    user-select: none;
+  }
+  ul {
+    list-style: none;
   }
 }
 
@@ -34,6 +42,7 @@ body {
   grid-area: logo;
   background-color: white;
   text-decoration: underline;
+  user-select: none;
 }
 
 .login {
@@ -135,6 +144,14 @@ body {
   }
 }
 
+#skor {
+  background-color: red;
+  min-height: 454px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .predlog {
   background-color: white;
   align-content: space-around;
@@ -206,6 +223,7 @@ body {
   color: white;
   font-weight: 900;
   font-size: 50px;
+  user-select: none;
 }
 
 label {
@@ -230,7 +248,7 @@ label {
 }
 
 #rez {
-  font-size: 20px;
+  font-size: 30px;
 }
 
 // PopUp

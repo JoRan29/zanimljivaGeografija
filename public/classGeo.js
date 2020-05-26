@@ -35,16 +35,20 @@ export class Geografija {
   async dodajPojam(poj, kat) {
     let date = new Date();
 
-    let predlog = {
-      korisnik: this.korisnik,
-      kategorija: kat,
-      pojam: poj,
-      pocetnoSlovo: this.prvoSlovo(poj),
-      vreme: firebase.firestore.Timestamp.fromDate(date),
-    };
+    if (kat == "" || kat == "Izaberi kategoriju") {
+      alert("Morate izabrati jednu od kategorija");
+    } else {
+      let predlog = {
+        korisnik: this.korisnik,
+        kategorija: kat,
+        pojam: poj,
+        pocetnoSlovo: this.prvoSlovo(poj),
+        vreme: firebase.firestore.Timestamp.fromDate(date),
+      };
 
-    let response = await this.zgeografija.add(predlog);
-    return response;
+      let response = await this.zgeografija.add(predlog);
+      return response;
+    }
   }
   // metod za proveru pojma
   proveriPojam(p, k, callback) {
@@ -73,9 +77,19 @@ export class Geografija {
   }
   // metod za pocetno slovo
   prvoSlovo(poj) {
-    let pocetnoSlo = poj.slice(0, 1);
-    pocetnoSlo.toUpperCase();
-    return pocetnoSlo;
+    if (
+      poj.slice(0, 2) === "Nj" ||
+      poj.slice(0, 2) === "Lj" ||
+      poj.slice(0, 2) === "Dž"
+    ) {
+      let pocetnoSlo = poj.slice(0, 2);
+      pocetnoSlo.toUpperCase();
+      return pocetnoSlo;
+    } else {
+      let pocetnoSlo = poj.slice(0, 1);
+      pocetnoSlo.toUpperCase();
+      return pocetnoSlo;
+    }
   }
   // metod za postavljanje velikog prvog slova od predlozene reci
   veliko(predlog) {
