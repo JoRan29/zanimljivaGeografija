@@ -45,6 +45,8 @@ formKorisnik.addEventListener("submit", (e) => {
   zgeo.promeniKorisnika(inputKorisnik.value);
   localStorage.korisnik = inputKorisnik.value;
   formKorisnik.reset();
+  // osvezi stranu
+  location.reload();
 });
 
 // vs
