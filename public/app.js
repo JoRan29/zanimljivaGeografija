@@ -21,7 +21,6 @@ let close = document.querySelector("#close");
 let zavrsiIgru = document.querySelector("#zavrsiIgru");
 let skor = document.querySelector("#skor");
 let username = document.querySelector("#username");
-// console.log(igrajBtn);
 
 // korisnk lokalna memorija
 let korisnik = () => {
@@ -73,10 +72,12 @@ formPredlog.addEventListener("submit", (e) => {
         console.log("Novi pojam dodat u bazu! " + predlogCap);
       } else {
         console.log("Pojam vec postoji!");
+        alert("Pojam vec postoji!");
       }
     });
   } else {
     console.log("Predlog ne sme sadrzati prazne karaktere!");
+    alert("Nevažeći pojam!");
   }
   formPredlog.reset();
 });
@@ -88,7 +89,6 @@ if (
   localStorage.korisnik == "anonimus"
 ) {
   console.log(`Izaberi korisnicko ime: `);
-  // document.body.style.innerHTML = "";
   formPredlog.style.pointerEvents = "none";
   formPredlog.style.opacity = "0.5";
   igraKorisnik.style.pointerEvents = "none";
@@ -113,10 +113,8 @@ zgeo.najviseUnosa((data) => {
   });
   // console.log(keysSorted);
   let top5 = keysSorted.reverse().slice(0, 5);
-  // console.log(top5);
 
   top5.forEach((t) => {
-    // console.log(t);
     let li = `<li>`;
     li += `${t}</li></br>`;
     ulPoznati.innerHTML += li;
@@ -175,9 +173,7 @@ igrajBtn.addEventListener("click", (e) => {
           }
           if (pojam != undefined) {
             i.value = `${pojam}`;
-            // kompSkor = kompSkor + 15;
-            odgovoriKomp.push(pojam);
-            console.log(kompSkor);
+            odgovoriKomp.push(pojam + " " + i.id);
           } else {
             i.value = `:(`;
           }
@@ -186,45 +182,122 @@ igrajBtn.addEventListener("click", (e) => {
       // Igrac submit odgovore - Korisnik Forma
       igraInput.forEach((i) => {
         let veliko = zgeo.veliko(i.value);
-        console.log(veliko);
+        if (
+          veliko == "" ||
+          veliko == undefined ||
+          veliko.startsWith(pocetnoSlovo) == false
+        ) {
+          i.value += " +0";
+        }
         if (veliko != "" && veliko.startsWith(pocetnoSlovo)) {
           zgeo.proveriPojam(veliko, i.id, (data) => {
             if (data) {
               console.log("Netacno!");
             } else {
               console.log("Pogodak!");
-              odgovoriKor.push(veliko);
+              odgovoriKor.push(veliko + " " + i.id);
             }
           });
         }
       });
+      console.log(odgovoriKomp);
+      console.log(odgovoriKor);
       // Racunanje rezultata
       window.scrollTo(0, 750);
       skor.innerHTML = `Računamo konačan rezultat...`;
+      // TODO Fix Score
       setTimeout(() => {
-        // Rezultat
-        kompSkor = odgovoriKomp.length * 10;
-        skorKorisnik = odgovoriKor.length * 10;
-        let razlika = odgovoriKomp.length - odgovoriKor.length;
-        if (razlika > 0) {
-          kompSkor += razlika * 15;
-          kompSkor += razlika * -10;
-        }
-        let razlika2 = odgovoriKor.length - odgovoriKomp.length;
-        if (razlika2 > 0) {
-          skorKorisnik += razlika2 * 15;
-          skorKorisnik += razlika2 * -10;
-        }
+        // Rezultat + Prikazi Skor
         odgovoriKomp.forEach((odg) => {
-          console.log(odg);
+          let odg1 = odg.split(/(?<=^\S+)\s/);
+          console.log(odg1);
           odgovoriKor.forEach((o) => {
-            if (odg == o) {
-              kompSkor = kompSkor - 5;
-              skorKorisnik = skorKorisnik - 5;
-              odgovoriKomp.pop(odg);
+            let o1 = o.split(/(?<=^\S+)\s/);
+            console.log(o1[1]);
+            if (odg1[1] == o1[1] && odg1[0] == o1[0]) {
+              // +5 - isti odgovori
+              igraInput.forEach((i) => {
+                if (i.id == odg1[1]) {
+                  i.value += " +5";
+                  skorKorisnik += 5;
+                }
+              });
+              kompInput.forEach((i) => {
+                if (i.id == odg1[1]) {
+                  i.value += " +5";
+                  kompSkor += 5;
+                  odgovoriKomp.shift();
+                }
+              });
+              odgovoriKomp.shift();
+            } else if (odg1[1] == o1[1] && odg1[0] != o1[0]) {
+              kompInput.forEach((i) => {
+                if (i.id == odg1[1]) {
+                  i.value += " +10";
+                  kompSkor += 10;
+                }
+              });
+              igraInput.forEach((i) => {
+                if (i.id == odg1[1]) {
+                  i.value += " +10";
+                  skorKorisnik += 10;
+                }
+              });
+              odgovoriKomp.shift();
+              // +10
             }
+            // else if (odg1[1] != o1[1] && odg1[0] != o1[0]) {
+            //   kompInput.forEach((i) => {
+            //     if (i.id == odg1[1] || i.value.includes(0) == false) {
+            //       i.value += " +15";
+            //       kompSkor += 15;
+            //     }
+            //   });
+            //   igraInput.forEach((i) => {
+            //     if (i.id == odg1[1] && odg1[1] != "") {
+            //       i.value += " +15";
+            //       skorKorisnik += 15;
+            //     }
+            //   });
+            //   odgovoriKomp.pop(odg);
+            // }
+            kompInput.forEach((i) => {
+              if (i.value == ":(" || i.value == undefined) {
+                i.value += " +0";
+              }
+            });
+            igraInput.forEach((i) => {
+              if (i.value == " " || i.value == undefined) {
+                i.value += " +0";
+              }
+            });
           });
+          console.log(odgovoriKomp);
         });
+        console.log(odgovoriKomp);
+
+        // // Rezultat
+        // kompSkor = odgovoriKomp.length * 10;
+        // skorKorisnik = odgovoriKor.length * 10;
+        // let razlika = odgovoriKomp.length - odgovoriKor.length;
+        // if (razlika > 0) {
+        //   kompSkor += razlika * 15;
+        //   kompSkor += razlika * -10;
+        // }
+        // let razlika2 = odgovoriKor.length - odgovoriKomp.length;
+        // if (razlika2 > 0) {
+        //   skorKorisnik += razlika2 * 15;
+        //   skorKorisnik += razlika2 * -10;
+        // }
+        // odgovoriKomp.forEach((odg) => {
+        //   odgovoriKor.forEach((o) => {
+        //     if (odg == o) {
+        //       kompSkor = kompSkor - 5;
+        //       skorKorisnik = skorKorisnik - 5;
+        //       odgovoriKomp.pop(odg);
+        //     }
+        //   });
+        // });
         // Skor
         let win = new Audio("win.mp3");
         let sad = new Audio("sad.mp3");

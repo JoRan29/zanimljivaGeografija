@@ -36,6 +36,7 @@ body .vs2 {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  text-shadow: 2px 2px greenyellow;
 }
 
 body ul {
@@ -98,7 +99,7 @@ body ul {
 }
 
 .main {
-  background-color: rgba(255, 255, 0, 0.7);
+  background-color: rgba(255, 255, 0, 0.808);
   -ms-flex-line-pack: distribute;
       align-content: space-around;
   -webkit-box-pack: center;
@@ -293,6 +294,7 @@ body ul {
 
 .predlog input[type="submit"] {
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .predlog:hover {
@@ -316,6 +318,19 @@ body ul {
   padding: 10px;
 }
 
+.foo p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 #TopLista h3 {
   text-decoration: underline;
 }
@@ -332,7 +347,7 @@ body ul {
 }
 
 #TopLista #poznati li {
-  background-color: rgba(255, 255, 255, 0.715);
+  background-color: rgba(255, 255, 255, 0.603);
   border-radius: 2px;
 }
 
@@ -348,11 +363,13 @@ body ul {
           user-select: none;
   margin-top: 30px;
   text-align: center;
+  text-shadow: 2px 2px yellow;
 }
 
 #poruka {
   font-size: 30px;
-  color: red;
+  color: white;
+  text-shadow: 2px 2px #ff0000;
 }
 
 label {

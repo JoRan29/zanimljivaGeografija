@@ -37,6 +37,8 @@ export class Geografija {
 
     if (kat == "" || kat == "Izaberi kategoriju") {
       alert("Morate izabrati jednu od kategorija");
+    } else if (poj == "") {
+      alert("Nevažeći pojam!");
     } else {
       let predlog = {
         korisnik: this.korisnik,
