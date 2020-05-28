@@ -136,9 +136,8 @@ igrajBtn.addEventListener("click", (e) => {
   let kompSkor = 0;
   let skorKorisnik = 0;
   // Izaberi Slovo
-  // let abeceda = "ABCČĆDĐEFGHIJKLMNOPRSTUVZŽ".split("");
-  // abeceda.push("Dž", "Nj", "Lj");
-  let abeceda = ["A"];
+  let abeceda = "ABCČĆDĐEFGHIJKLMNOPRSTUVZŽ".split("");
+  abeceda.push("Dž", "Nj", "Lj");
   pocetnoSlovo = zgeo.random(abeceda);
   slovo.innerHTML = pocetnoSlovo;
   // Podesi odbrojavanje
