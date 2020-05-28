@@ -136,8 +136,9 @@ igrajBtn.addEventListener("click", (e) => {
   let kompSkor = 0;
   let skorKorisnik = 0;
   // Izaberi Slovo
-  let abeceda = "ABCČĆDĐEFGHIJKLMNOPRSTUVZŽ".split("");
-  abeceda.push("Dž", "Nj", "Lj");
+  // let abeceda = "ABCČĆDĐEFGHIJKLMNOPRSTUVZŽ".split("");
+  // abeceda.push("Dž", "Nj", "Lj");
+  let abeceda = ["A"];
   pocetnoSlovo = zgeo.random(abeceda);
   slovo.innerHTML = pocetnoSlovo;
   // Podesi odbrojavanje
@@ -215,7 +216,7 @@ igrajBtn.addEventListener("click", (e) => {
           console.log(odg1);
           odgovoriKor.forEach((o) => {
             let o1 = o.split(/(?<=^\S+)\s/);
-            console.log(o1[1]);
+            console.log(o1);
             if (odg1[1] == o1[1] && odg1[0] == o1[0]) {
               // +5 - isti odgovori
               igraInput.forEach((i) => {
@@ -228,11 +229,10 @@ igrajBtn.addEventListener("click", (e) => {
                 if (i.id == odg1[1]) {
                   i.value += " +5";
                   kompSkor += 5;
-                  odgovoriKomp.shift();
                 }
               });
-              odgovoriKomp.shift();
             } else if (odg1[1] == o1[1] && odg1[0] != o1[0]) {
+              // +10
               kompInput.forEach((i) => {
                 if (i.id == odg1[1]) {
                   i.value += " +10";
@@ -245,24 +245,7 @@ igrajBtn.addEventListener("click", (e) => {
                   skorKorisnik += 10;
                 }
               });
-              odgovoriKomp.shift();
-              // +10
             }
-            // else if (odg1[1] != o1[1] && odg1[0] != o1[0]) {
-            //   kompInput.forEach((i) => {
-            //     if (i.id == odg1[1] || i.value.includes(0) == false) {
-            //       i.value += " +15";
-            //       kompSkor += 15;
-            //     }
-            //   });
-            //   igraInput.forEach((i) => {
-            //     if (i.id == odg1[1] && odg1[1] != "") {
-            //       i.value += " +15";
-            //       skorKorisnik += 15;
-            //     }
-            //   });
-            //   odgovoriKomp.pop(odg);
-            // }
             kompInput.forEach((i) => {
               if (i.value == ":(" || i.value == undefined) {
                 i.value += " +0";
@@ -274,10 +257,23 @@ igrajBtn.addEventListener("click", (e) => {
               }
             });
           });
-          console.log(odgovoriKomp);
         });
-        console.log(odgovoriKomp);
-
+        setTimeout(() => {
+          // +15
+          igraInput.forEach((i) => {
+            console.log(i.value);
+            if (i.value.includes("+") == false) {
+              i.value += " +15";
+              skorKorisnik += 15;
+            }
+          });
+          kompInput.forEach((i) => {
+            if (i.value.includes("+") == false) {
+              i.value += " +15";
+              kompSkor += 15;
+            }
+          });
+        }, 200);
         // // Rezultat
         // kompSkor = odgovoriKomp.length * 10;
         // skorKorisnik = odgovoriKor.length * 10;
@@ -303,24 +299,26 @@ igrajBtn.addEventListener("click", (e) => {
         // Skor
         let win = new Audio("win.mp3");
         let sad = new Audio("sad.mp3");
-        if (skorKorisnik > kompSkor) {
-          skor.innerHTML =
-            `${localStorage.korisnik} je osvojio/la ${skorKorisnik} poena!` +
-            `<div> Kompjuter je osvojio ${kompSkor} poena!</div>` +
-            `<div id="rez">Pobednik je ${localStorage.korisnik}! Čestitamo!</div>`;
-          win.play();
-        } else if (kompSkor > skorKorisnik) {
-          skor.innerHTML =
-            `${localStorage.korisnik} je osvojio/la ${skorKorisnik} poena!` +
-            `<div> Kompjuter je osvojio ${kompSkor} poena!</div>` +
-            `<div id="rez">Pobednik je kompjuter - Više sreće drugi put!</div>`;
-          sad.play();
-        } else {
-          skor.innerHTML =
-            `${localStorage.korisnik} je osvojio/la ${skorKorisnik} poena!` +
-            `<div> Kompjuter je osvojio ${kompSkor} poena!</div>` +
-            `<div id="rez">Rezultat je nerešen - Pokušajte ponovo!</div>`;
-        }
+        setTimeout(() => {
+          if (skorKorisnik > kompSkor) {
+            skor.innerHTML =
+              `${localStorage.korisnik} je osvojio/la ${skorKorisnik} poena!` +
+              `<div> Kompjuter je osvojio ${kompSkor} poena!</div>` +
+              `<div id="rez">Pobednik je ${localStorage.korisnik}! Čestitamo!</div>`;
+            win.play();
+          } else if (kompSkor > skorKorisnik) {
+            skor.innerHTML =
+              `${localStorage.korisnik} je osvojio/la ${skorKorisnik} poena!` +
+              `<div> Kompjuter je osvojio ${kompSkor} poena!</div>` +
+              `<div id="rez">Pobednik je kompjuter - Više sreće drugi put!</div>`;
+            sad.play();
+          } else {
+            skor.innerHTML =
+              `${localStorage.korisnik} je osvojio/la ${skorKorisnik} poena!` +
+              `<div> Kompjuter je osvojio ${kompSkor} poena!</div>` +
+              `<div id="rez">Rezultat je nerešen - Pokušajte ponovo!</div>`;
+          }
+        }, 400);
       }, 1000);
       // Stilizovanje
       igrajBtn.style.fontWeight = "500";
