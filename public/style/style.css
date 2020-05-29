@@ -402,6 +402,30 @@ label {
   font-size: 30px;
 }
 
+#computer {
+  -webkit-transition: ease-in-out 0.3;
+  transition: ease-in-out 0.3;
+  opacity: 1;
+}
+
+#avatar {
+  -webkit-transition: ease-in-out 0.3;
+  transition: ease-in-out 0.3;
+  opacity: 0.4;
+}
+
+#computer:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+#avatar:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-transition: ease-in-out 0.3;
+  transition: ease-in-out 0.3;
+}
+
 #popup {
   position: fixed;
   top: 40%;

@@ -288,6 +288,25 @@ label {
   font-size: 30px;
 }
 
+#computer {
+  transition: ease-in-out 0.3;
+  opacity: 1;
+}
+
+#avatar {
+  transition: ease-in-out 0.3;
+  opacity: 0.4;
+}
+
+#computer:hover {
+  transform: scale(1.2);
+}
+
+#avatar:hover {
+  transform: scale(1.2);
+  transition: ease-in-out 0.3;
+}
+
 // PopUp
 
 #popup {

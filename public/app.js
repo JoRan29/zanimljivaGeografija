@@ -15,12 +15,15 @@ let igrajBtn = document.querySelector("#igrajBtn");
 let igraKomp = document.querySelector("#igraKomp");
 let kompInput = document.querySelectorAll(".kompInput");
 let vs = document.querySelector(".vs");
+let vs2 = document.querySelector(".vs2");
 let slovo = document.querySelector("#slovo");
 let pravila = document.querySelector("#pravila");
 let close = document.querySelector("#close");
 let zavrsiIgru = document.querySelector("#zavrsiIgru");
 let skor = document.querySelector("#skor");
 let username = document.querySelector("#username");
+let avatar = document.getElementById("avatar");
+let computer = document.getElementById("computer");
 
 // korisnk lokalna memorija
 let korisnik = () => {
@@ -216,6 +219,11 @@ igrajBtn.addEventListener("click", (e) => {
           odgovoriKor.forEach((o) => {
             let o1 = o.split(/(?<=^\S+)\s/);
             console.log(o1);
+            kompInput.forEach((i) => {
+              if (i.value == ":(" || i.value == undefined) {
+                i.value += " +0";
+              }
+            });
             if (odg1[1] == o1[1] && odg1[0] == o1[0]) {
               // +5 - isti odgovori
               igraInput.forEach((i) => {
@@ -244,35 +252,37 @@ igrajBtn.addEventListener("click", (e) => {
                   skorKorisnik += 10;
                 }
               });
+            } else {
+              kompInput.forEach((i) => {
+                if (i.value == ":(" || i.value == undefined) {
+                  i.value += " +0";
+                }
+              });
+              igraInput.forEach((i) => {
+                if (i.value == " " || i.value == undefined) {
+                  i.value += "Bez odgovora";
+                  i.value += " +0";
+                }
+              });
             }
-            kompInput.forEach((i) => {
-              if (i.value == ":(" || i.value == undefined) {
-                i.value += " +0";
-              }
-            });
-            igraInput.forEach((i) => {
-              if (i.value == " " || i.value == undefined) {
-                i.value += " +0";
-              }
-            });
           });
         });
         setTimeout(() => {
           // +15
           igraInput.forEach((i) => {
-            console.log(i.value);
             if (i.value.includes("+") == false) {
               i.value += " +15";
               skorKorisnik += 15;
             }
           });
           kompInput.forEach((i) => {
+            console.log(i.value);
             if (i.value.includes("+") == false) {
               i.value += " +15";
               kompSkor += 15;
             }
           });
-        }, 200);
+        }, 300);
         // // Rezultat
         // kompSkor = odgovoriKomp.length * 10;
         // skorKorisnik = odgovoriKor.length * 10;
@@ -317,7 +327,7 @@ igrajBtn.addEventListener("click", (e) => {
               `<div> Kompjuter je osvojio ${kompSkor} poena!</div>` +
               `<div id="rez">Rezultat je nerešen - Pokušajte ponovo!</div>`;
           }
-        }, 400);
+        }, 700);
       }, 1000);
       // Stilizovanje
       igrajBtn.style.fontWeight = "500";
@@ -351,3 +361,46 @@ pravila.addEventListener("click", () => {
 close.addEventListener("click", () => {
   toggle();
 });
+
+// socket.io
+const sock = io();
+
+const writeEvent = (text) => {
+  // parent - IgraKomp
+  // child - kompInput
+  kompInput.forEach((i) => {
+    i.value = text;
+  });
+};
+
+// writeEvent("Hi");
+sock.on("message", (text) => {
+  writeEvent(text);
+});
+
+const onFormSubmitted = (e) => {
+  e.preventDefault();
+  let odgovori = igraInput.values;
+  sock.emit("message", odgovori);
+};
+
+document.addEventListener("submit", onFormSubmitted);
+
+// protiv druge osobe
+avatar.addEventListener("click", (e) => {
+  e.preventDefault();
+  vs2.innerHTML = "Čekamo protivnika...";
+  avatar.style.opacity = "1";
+  computer.style.opacity = "0.4";
+});
+
+computer.addEventListener("click", (e) => {
+  e.preventDefault();
+  vs2.innerHTML = "Kompjuter";
+  avatar.style.opacity = "0.4";
+  computer.style.opacity = "1";
+});
+
+// start game with person
+
+console.log(avatar.style);
