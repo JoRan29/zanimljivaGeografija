@@ -181,6 +181,7 @@ igrajBtn.addEventListener("click", (e) => {
             odgovoriKomp.push(pojam + " " + i.id);
           } else {
             i.value = `:(`;
+            i.value += ` +0`;
           }
         });
       });
@@ -213,6 +214,12 @@ igrajBtn.addEventListener("click", (e) => {
       // TODO Fix Score
       setTimeout(() => {
         // Rezultat + Prikazi Skor
+        if (odgovoriKor == []) {
+          kompInput.forEach((i) => {
+            i.value += " +0";
+          });
+        }
+        console.log(kompSkor);
         odgovoriKomp.forEach((odg) => {
           let odg1 = odg.split(/(?<=^\S+)\s/);
           console.log(odg1);
@@ -254,7 +261,7 @@ igrajBtn.addEventListener("click", (e) => {
               });
             } else {
               kompInput.forEach((i) => {
-                if (i.value == ":(" || i.value == undefined) {
+                if (i.value == ":(" || i.value == undefined || i.value == "") {
                   i.value += " +0";
                 }
               });
@@ -267,6 +274,7 @@ igrajBtn.addEventListener("click", (e) => {
             }
           });
         });
+        console.log(kompSkor);
         setTimeout(() => {
           // +15
           igraInput.forEach((i) => {
@@ -403,4 +411,4 @@ computer.addEventListener("click", (e) => {
 
 // start game with person
 
-console.log(avatar.style);
+console.log(avatar.style.opacity);
