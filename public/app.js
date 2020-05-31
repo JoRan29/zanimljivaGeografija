@@ -199,6 +199,7 @@ igrajBtn.addEventListener("click", (e) => {
           zgeo.proveriPojam(veliko, i.id, (data) => {
             if (data) {
               console.log("Netacno!");
+              i.value += " +0";
             } else {
               console.log("Pogodak!");
               odgovoriKor.push(veliko + " " + i.id);
@@ -211,7 +212,6 @@ igrajBtn.addEventListener("click", (e) => {
       // Racunanje rezultata
       window.scrollTo(0, 750);
       skor.innerHTML = `Računamo konačan rezultat...`;
-      // TODO Fix Score
       setTimeout(() => {
         // Rezultat + Prikazi Skor
         if (odgovoriKor == []) {
@@ -219,13 +219,15 @@ igrajBtn.addEventListener("click", (e) => {
             i.value += " +0";
           });
         }
-        console.log(kompSkor);
+        if (odgovoriKor == []) {
+          inputKorisnik.forEach((i) => {
+            i.value += " +0";
+          });
+        }
         odgovoriKomp.forEach((odg) => {
           let odg1 = odg.split(/(?<=^\S+)\s/);
-          console.log(odg1);
           odgovoriKor.forEach((o) => {
             let o1 = o.split(/(?<=^\S+)\s/);
-            console.log(o1);
             kompInput.forEach((i) => {
               if (i.value == ":(" || i.value == undefined) {
                 i.value += " +0";
@@ -274,7 +276,6 @@ igrajBtn.addEventListener("click", (e) => {
             }
           });
         });
-        console.log(kompSkor);
         setTimeout(() => {
           // +15
           igraInput.forEach((i) => {
@@ -284,35 +285,12 @@ igrajBtn.addEventListener("click", (e) => {
             }
           });
           kompInput.forEach((i) => {
-            console.log(i.value);
             if (i.value.includes("+") == false) {
               i.value += " +15";
               kompSkor += 15;
             }
           });
         }, 300);
-        // // Rezultat
-        // kompSkor = odgovoriKomp.length * 10;
-        // skorKorisnik = odgovoriKor.length * 10;
-        // let razlika = odgovoriKomp.length - odgovoriKor.length;
-        // if (razlika > 0) {
-        //   kompSkor += razlika * 15;
-        //   kompSkor += razlika * -10;
-        // }
-        // let razlika2 = odgovoriKor.length - odgovoriKomp.length;
-        // if (razlika2 > 0) {
-        //   skorKorisnik += razlika2 * 15;
-        //   skorKorisnik += razlika2 * -10;
-        // }
-        // odgovoriKomp.forEach((odg) => {
-        //   odgovoriKor.forEach((o) => {
-        //     if (odg == o) {
-        //       kompSkor = kompSkor - 5;
-        //       skorKorisnik = skorKorisnik - 5;
-        //       odgovoriKomp.pop(odg);
-        //     }
-        //   });
-        // });
         // Skor
         let win = new Audio("win.mp3");
         let sad = new Audio("sad.mp3");
@@ -370,29 +348,29 @@ close.addEventListener("click", () => {
   toggle();
 });
 
-// socket.io
-const sock = io();
+// // socket.io
+// const sock = io();
 
-const writeEvent = (text) => {
-  // parent - IgraKomp
-  // child - kompInput
-  kompInput.forEach((i) => {
-    i.value = text;
-  });
-};
+// const writeEvent = (text) => {
+//   // parent - IgraKomp
+//   // child - kompInput
+//   kompInput.forEach((i) => {
+//     i.value = text;
+//   });
+// };
 
-// writeEvent("Hi");
-sock.on("message", (text) => {
-  writeEvent(text);
-});
+// // writeEvent("Hi");
+// sock.on("message", (text) => {
+//   writeEvent(text);
+// });
 
-const onFormSubmitted = (e) => {
-  e.preventDefault();
-  let odgovori = igraInput.values;
-  sock.emit("message", odgovori);
-};
+// const onFormSubmitted = (e) => {
+//   e.preventDefault();
+//   let odgovori = igraInput.values;
+//   sock.emit("message", odgovori);
+// };
 
-document.addEventListener("submit", onFormSubmitted);
+// document.addEventListener("submit", onFormSubmitted);
 
 // protiv druge osobe
 avatar.addEventListener("click", (e) => {
@@ -411,4 +389,4 @@ computer.addEventListener("click", (e) => {
 
 // start game with person
 
-console.log(avatar.style.opacity);
+// console.log(avatar.style.opacity);
