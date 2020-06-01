@@ -93,7 +93,6 @@ if (
   localStorage.korisnik == undefined ||
   localStorage.korisnik == "anonimus"
 ) {
-  console.log(`Izaberi korisnicko ime: `);
   formPredlog.style.pointerEvents = "none";
   formPredlog.style.opacity = "0.5";
   igraKorisnik.style.pointerEvents = "none";
@@ -101,6 +100,8 @@ if (
   username.innerHTML = "Izaberi korisničko ime:";
   igrajBtn.style.pointerEvents = "none";
   igrajBtn.style.backgroundColor = "gray";
+  avatar.style.pointerEvents = "none";
+  computer.style.pointerEvents = "none";
   alert(`Ne mozete pristupiti stranici bez korisnickog imena!`);
 }
 
@@ -348,29 +349,16 @@ close.addEventListener("click", () => {
   toggle();
 });
 
-// // socket.io
-// const sock = io();
+// socket.io
+const sock = io();
 
-// const writeEvent = (text) => {
-//   // parent - IgraKomp
-//   // child - kompInput
-//   kompInput.forEach((i) => {
-//     i.value = text;
-//   });
-// };
+sock.on("connect", () => {
+  console.log("Connected to server!");
+});
 
-// // writeEvent("Hi");
-// sock.on("message", (text) => {
-//   writeEvent(text);
-// });
-
-// const onFormSubmitted = (e) => {
-//   e.preventDefault();
-//   let odgovori = igraInput.values;
-//   sock.emit("message", odgovori);
-// };
-
-// document.addEventListener("submit", onFormSubmitted);
+sock.on("disconnect", () => {
+  console.log("Disconnected from server!");
+});
 
 // protiv druge osobe
 avatar.addEventListener("click", (e) => {
@@ -385,8 +373,10 @@ computer.addEventListener("click", (e) => {
   vs2.innerHTML = "Kompjuter";
   avatar.style.opacity = "0.4";
   computer.style.opacity = "1";
+  sock.emit("createMessage", {
+    msg: "Hello",
+    id: sock.id,
+  });
 });
-
-// start game with person
 
 // console.log(avatar.style.opacity);
