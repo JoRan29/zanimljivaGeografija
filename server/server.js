@@ -22,7 +22,14 @@ io.on("connection", (sock) => {
   sock.on("createMessage", (message) => {
     console.log("createMessage", message);
   });
-
+  // custom event
+  sock.on("clientEvent", (data) => {
+    console.log(data);
+  });
+  //event
+  sock.on("event", (data) => {
+    console.log(data);
+  });
   // on disconnect
   sock.on("disconnect", () => {
     console.log("User has disconnected!");
@@ -37,3 +44,5 @@ server.on("error", (err) => {
 server.listen(8080, () => {
   console.log("It's alive - on 8080!");
 });
+
+// custom events

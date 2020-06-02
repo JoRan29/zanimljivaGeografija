@@ -126,7 +126,6 @@ export class Geografija {
         snap.forEach((doc) => {
           let pojam = doc.data().pojam;
           arr.push(pojam);
-          // console.log(arr);
         });
         callback(arr);
       })

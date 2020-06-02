@@ -111,13 +111,9 @@ zgeo.najviseUnosa((data) => {
   data.forEach(function (x) {
     lista[x] = (lista[x] || 0) + 1;
   });
-  // console.log(lista);
-  // console.log(Object.keys(lista));
-  // console.log(Object.keys(lista).sort());
   let keysSorted = Object.keys(lista).sort(function (a, b) {
     return lista[a] - lista[b];
   });
-  // console.log(keysSorted);
   let top5 = keysSorted.reverse().slice(0, 5);
 
   top5.forEach((t) => {
@@ -170,7 +166,7 @@ igrajBtn.addEventListener("click", (e) => {
       // Komp Dobije Odgovore
       kompInput.forEach((i) => {
         zgeo.uzmiPojam(i.id, pocetnoSlovo, (d) => {
-          // uzmi jedan pojam nasumice iz baze na osnocu slova i kategorije
+          // uzmi jedan pojam nasumice iz baze na osnovu slova i kategorije
           let pojam = zgeo.random(d);
           // nasumicno netacno
           let per = Math.random();
@@ -330,10 +326,10 @@ igrajBtn.addEventListener("click", (e) => {
   }, 1000);
 });
 
-// Korisnik Igra Forma
-igraKorisnik.addEventListener("submit", (e) => {
-  e.preventDefault();
-});
+// // Korisnik Igra Forma
+// igraKorisnik.addEventListener("submit", (e) => {
+//   e.preventDefault();
+// });
 
 // popup - pravila
 let toggle = () => {
@@ -352,20 +348,34 @@ close.addEventListener("click", () => {
 // socket.io
 const sock = io();
 
-sock.on("connect", () => {
-  console.log("Connected to server!");
-});
-
-sock.on("disconnect", () => {
-  console.log("Disconnected from server!");
-});
-
 // protiv druge osobe
 avatar.addEventListener("click", (e) => {
   e.preventDefault();
   vs2.innerHTML = "Čekamo protivnika...";
   avatar.style.opacity = "1";
   computer.style.opacity = "0.4";
+  // clear form
+  igraKorisnik.reset();
+  igraKomp.reset();
+  // korisnik se povezao
+  sock.on("connect", () => {
+    console.log("Connected to server!");
+  });
+  // poruka
+  sock.emit("createMessage", {
+    msg: "Hello",
+    id: sock.id,
+  });
+  sock.emit("clientEvent", `Sent an event from the client!`);
+  // custom event
+  setTimeout(() => {
+    sock.emit("event", `done!`);
+    vs2.innerHTML = sock.id;
+  }, 3000);
+  // disconnect
+  sock.on("disconnect", () => {
+    console.log("Disconnected from server!");
+  });
 });
 
 computer.addEventListener("click", (e) => {
@@ -373,10 +383,6 @@ computer.addEventListener("click", (e) => {
   vs2.innerHTML = "Kompjuter";
   avatar.style.opacity = "0.4";
   computer.style.opacity = "1";
-  sock.emit("createMessage", {
-    msg: "Hello",
-    id: sock.id,
-  });
 });
 
 // console.log(avatar.style.opacity);
