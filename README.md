@@ -2,3 +2,7 @@
 ## Edukativna drustvena igra za jednog ili vise igraca - u digitalnom formatu!
 
 ### In Progress...
+
+##### Preview 
+![Zanimljiva Geografija - First Page](/server/zgeo.png)
+
