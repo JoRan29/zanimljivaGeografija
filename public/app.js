@@ -345,38 +345,17 @@ close.addEventListener("click", () => {
   toggle();
 });
 
-// socket.io
-const sock = io();
-
-// protiv druge osobe
-avatar.addEventListener("click", (e) => {
-  e.preventDefault();
-  vs2.innerHTML = "Čekamo protivnika...";
-  avatar.style.opacity = "1";
-  computer.style.opacity = "0.4";
-  // clear form
-  igraKorisnik.reset();
-  igraKomp.reset();
-  // korisnik se povezao
-  sock.on("connect", () => {
-    console.log("Connected to server!");
-  });
-  // poruka
-  sock.emit("createMessage", {
-    msg: "Hello",
-    id: sock.id,
-  });
-  sock.emit("clientEvent", `Sent an event from the client!`);
-  // custom event
-  setTimeout(() => {
-    sock.emit("event", `done!`);
-    vs2.innerHTML = sock.id;
-  }, 3000);
-  // disconnect
-  sock.on("disconnect", () => {
-    console.log("Disconnected from server!");
-  });
-});
+// // protiv druge osobe
+// avatar.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   vs2.innerHTML = "Čekamo protivnika...";
+//   avatar.style.opacity = "1";
+//   computer.style.opacity = "0.4";
+//   // clear form
+//   igraKorisnik.reset();
+//   igraKomp.reset();
+//   // console.log(igraInput.values);
+// });
 
 computer.addEventListener("click", (e) => {
   e.preventDefault();
@@ -384,5 +363,3 @@ computer.addEventListener("click", (e) => {
   avatar.style.opacity = "0.4";
   computer.style.opacity = "1";
 });
-
-// console.log(avatar.style.opacity);

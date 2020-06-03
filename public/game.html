@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/style.css" />
+    <title>Zanimljiva Geografija - 1vs1</title>
+  </head>
+  <body>
+    <!-- Icons - Computer - Avatar -->
+    <div id="icons" class="d-inline">
+      <a href="index.html">
+        <img id="computer" width="80px" src="notebook.png" alt=""
+      /></a>
+      <a href="game.html"
+        ><img id="avatar" width="80px" src="avatar.png" alt=""
+      /></a>
+    </div>
+    <div class="">
+      <h2 class="p-4" id="pozdrav">
+        <!-- Ime -->
+      </h2>
+    </div>
+    <div class="game game1vs1">
+      <!-- Play Btn + Countdown -->
+      <input type="submit" value="Igraj!" id="igrajBtn" /> <br />
+      <br />
+      <span>SLOVO:</span> <br />
+      <div id="slovo">?</div>
+      <!-- Form -->
+      <form action="" id="igraKorisnik">
+        <div class="vs"></div>
+        <input type="text" placeholder="Država" class="igraInput" id="Država" />
+        <br />
+        <input type="text" placeholder="Grad" class="igraInput" id="Grad" />
+        <br />
+        <input type="text" placeholder="Reka" class="igraInput" id="Reka" />
+        <br />
+        <input
+          type="text"
+          placeholder="Planina"
+          class="igraInput"
+          id="Planina"
+        />
+        <br />
+        <input
+          type="text"
+          placeholder="Životinja"
+          class="igraInput"
+          id="Životinja"
+        />
+        <br />
+        <input type="text" placeholder="Biljka" class="igraInput" id="Biljka" />
+        <br />
+        <input
+          type="text"
+          placeholder="Predmet"
+          class="igraInput"
+          id="Predmet"
+        />
+        <br />
+        <input id="zavrsiIgru" type="submit" value="Završi Igru!" />
+      </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="game.js"></script>
+  </body>
+</html>

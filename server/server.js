@@ -13,15 +13,12 @@ const server = http.createServer(app);
 
 const io = socketio(server);
 
+const nsp = io.of("/game");
+
 // emit - everyone receives a message (including the client sending it)
-io.on("connection", (sock) => {
+nsp.on("connection", (sock) => {
   // on connect
-  console.log(sock.id);
-  console.log("Someone connected!");
-  // custom message
-  sock.on("createMessage", (message) => {
-    console.log("createMessage", message);
-  });
+  console.log("Someone connected: " + sock.id);
   // custom event
   sock.on("clientEvent", (data) => {
     console.log(data);
@@ -44,5 +41,3 @@ server.on("error", (err) => {
 server.listen(8080, () => {
   console.log("It's alive - on 8080!");
 });
-
-// custom events
