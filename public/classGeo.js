@@ -5,6 +5,7 @@ export class Geografija {
     this.pojam = poj;
     this.pocetnoSlovo = slo;
     this.zgeografija = db.collection("pojmovi");
+    this.rezultati = db.collection("rezultati");
   }
   // geteri i seteri
   get korisnik() {
@@ -131,6 +132,34 @@ export class Geografija {
       })
       .catch((err) => {
         console.error(err);
+      });
+  }
+  async dodajRez(poeni) {
+    let date = new Date();
+
+    let rez = {
+      username: this._korisnik,
+      datum: firebase.firestore.Timestamp.fromDate(date),
+      broj_poena: poeni,
+      broj_igara: parseInt(localStorage.broj_igara) + 1,
+    };
+
+    let response = await this.rezultati.add(rez);
+    return response;
+  }
+  uzmiBrIgara(korisnik, call) {
+    let rez;
+    this.rezultati
+      .where("username", "==", korisnik)
+      .orderBy("broj_igara", "desc")
+      .limit(1)
+      .get()
+      .then((s) => {
+        s.forEach((doc) => {
+          console.log(doc.data().broj_igara);
+          rez = doc.data().broj_igara;
+        });
+        call(rez);
       });
   }
 }

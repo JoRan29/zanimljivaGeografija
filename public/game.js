@@ -56,6 +56,9 @@ const onFormSub = (e) => {
 };
 
 sock.on("message", writeEvent);
+sock.on("input", (data) => {
+  console.log(data);
+});
 
 // form
 

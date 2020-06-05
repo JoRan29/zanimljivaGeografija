@@ -52,6 +52,19 @@ formKorisnik.addEventListener("submit", (e) => {
   location.reload();
 });
 
+// broj odigranih partija
+
+localStorage.setItem("broj_igara", null);
+// console.log(zgeo.uzmiBrIgara(localStorage.korisnik));
+
+if (localStorage.korisnik) {
+  zgeo.uzmiBrIgara(localStorage.korisnik, (data) => {
+    console.log(data);
+    let brIgara = data;
+    localStorage.setItem("broj_igara", brIgara);
+  });
+}
+
 // vs
 if (localStorage.korisnik) {
   vs.innerHTML = `${localStorage.korisnik}`;
@@ -287,7 +300,9 @@ igrajBtn.addEventListener("click", (e) => {
               kompSkor += 15;
             }
           });
+          zgeo.dodajRez(skorKorisnik);
         }, 300);
+        // Dodaj rez
         // Skor
         let win = new Audio("win.mp3");
         let sad = new Audio("sad.mp3");
