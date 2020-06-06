@@ -18,9 +18,9 @@
       <div class="row align-items-start">
         <div class="col-md-4 logo p-3">
           <img width="100px" src="world-lr.webp" alt="" />
-          <h3>Zanimljiva Geografija</h3>
+          <h3 class="pb-4">Zanimljiva Geografija</h3>
           <p>
-            Radovi u toku!
+            <!-- Radovi u toku! -->
           </p>
         </div>
         <div class="col-md-8 userbg">
@@ -32,35 +32,59 @@
     </div>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-4 nav">
+        <div class="col-md-6 nav">
           <div class="col-md-12 justify-content-start">
             <div class="nav">
               <nav class="nav">
-                <a class="nav-link" href="#">Pravila</a>
+                <a class="nav-link" href="#" id="pravila">Pravila</a>
                 <a class="nav-link" href="#game">Igraj!</a>
                 <a class="nav-link" href="#formPredlog">Predlog</a>
                 <a class="nav-link active" href="#TopLista">Top Lista</a>
               </nav>
             </div>
+            <div id="popup" class="">
+              <h2>Pravila Igre</h2>
+              <br />
+              <ul>
+                <li>Izaberite korisničko ime.</li>
+                <li>
+                  Kliknite na dugme IGRAJ da pokrenete štopericu i dobijete
+                  zadato slovo.
+                </li>
+                <li>
+                  Proverite da li ste bolji od kompjutera u delu sa rezultatom.
+                </li>
+                <li>Ponovite korake 2 i 3. :)</li>
+              </ul>
+              <p>
+                Napomena: Budite pažljivi prilikom unosa pojmova, kompjuter ne
+                razume šišanu latinicu! :)
+                <br />
+              </p>
+              <a href="#" id="close">Zatvori</a>
+            </div>
           </div>
         </div>
-        <div class="col-md-8 login p-3">
+        <div class="col-md-6 login p-3">
           <!-- Izaberi/Promeni Korisnicko Ime -->
           <!-- Forma - Korisnicko ime -->
           <form id="formKorisnik">
-            <label for="">Želiš da promeniš korisničko ime?</label>
+            <label for="" id="username">
+              Želiš da promeniš korisničko ime?
+            </label>
             <input type="text" id="korisnik" placeholder="" /> <br />
-            <input type="submit" name="" id="" value="Pošalji" />
+            <input type="submit" name="" id="" value="Promeni" />
           </form>
         </div>
       </div>
     </div>
     <!-- GAME -->
-    <div class="container-fluid game" id="game">
+    <div class="container-fluid game p-4" id="game">
       <div class="row align-items-center">
         <div class="col-md-5 game p-4">
           <!-- Form IgraKorisnik -->
           <form action="" id="igraKorisnik">
+            <div class="vs"></div>
             <input
               type="text"
               placeholder="Država"
@@ -100,13 +124,73 @@
               id="Predmet"
             />
             <br />
+            <input id="zavrsiIgru" type="submit" value="Završi Igru!" />
           </form>
         </div>
         <div class="col-md-2 game p-4">
+          <div id="icons" class="d-inline">
+            <img id="computer" width="80px" src="notebook.png" alt="" />
+            <a href="game.html"
+              ><img id="avatar" width="80px" src="avatar.png" alt=""
+            /></a>
+          </div>
+          <br />
           <input type="submit" value="Igraj!" id="igrajBtn" /> <br />
-          <span class="vs"></span>
+          <br />
+          <span>SLOVO:</span> <br />
+          <div id="slovo">?</div>
         </div>
-        <div class="col-md-5 game p-4">Komp</div>
+        <div class="col-md-5 game p-4">
+          <!-- Igra Komp -->
+          <form action="" id="igraKomp">
+            <div class="vs2">Kompjuter</div>
+            <input
+              type="text"
+              placeholder="Država"
+              class="kompInput"
+              id="Država"
+            />
+            <br />
+            <input
+              type="text"
+              value=""
+              placeholder="Grad"
+              class="kompInput"
+              id="Grad"
+            />
+            <br />
+            <input type="text" placeholder="Reka" class="kompInput" id="Reka" />
+            <br />
+            <input
+              type="text"
+              placeholder="Planina"
+              class="kompInput"
+              id="Planina"
+            />
+            <br />
+            <input
+              type="text"
+              placeholder="Životinja"
+              class="kompInput"
+              id="Životinja"
+            />
+            <br />
+            <input
+              type="text"
+              placeholder="Biljka"
+              class="kompInput"
+              id="Biljka"
+            />
+            <br />
+            <input
+              type="text"
+              placeholder="Predmet"
+              class="kompInput"
+              id="Predmet"
+            />
+            <br />
+          </form>
+        </div>
       </div>
     </div>
     <div class="container-fluid">
@@ -116,8 +200,11 @@
           <form id="formPredlog">
             <label for="">Predloži novi pojam:</label> <br />
             <br />
-            <span>Kategorija:</span>
+            <!-- <span>Kategorija:</span> -->
             <select id="select">
+              <option disabled="disabled" disabled selected
+                >Izaberi kategoriju</option
+              >
               <option value="Država">Država</option>
               <option value="Grad">Grad</option>
               <option value="Reka">Reka</option>
@@ -136,12 +223,19 @@
             <input type="submit" name="" value="Pošalji" />
           </form>
         </div>
-        <div class="col-md-4 p-3">hello</div>
+        <div class="col-md-4 p-3" id="skor">
+          <h2>
+            Vaš rezultat će biti prikazan ovde nakon odigrane igre. <br />
+            Srećno!
+          </h2>
+        </div>
         <div class="col-md-4 main p-3" id="TopLista">
           <h3>Top Lista</h3>
+          <h5>(po broju ubačenih pojmova)</h5>
           <ul id="poznati">
             <!-- Top 5 lista -->
           </ul>
+          <p>Upiši se i ti!</p>
         </div>
       </div>
     </div>
@@ -149,15 +243,17 @@
       <div class="container-fluid">
         <div class="row align-items-center foo">
           <div class="col-sm foo p-2">
-            <h3>Footer</h3>
-            <p>
-              © 2020 ITBootcamp - All rights reserved.
+            <p class="pt-3">
+              © ITBootcamp Niš - 2020
+              <a href="https://github.com/JoRan29" target="_blank"
+                >Jovana Ranđelović</a
+              >
             </p>
           </div>
-          <div class="col-md-3 foo">
-            <img width="40px" src="facebook .svg" alt="#" />
-            <img width="40px" src="instagram.svg" alt="#" />
-            <img width="40px" src="twitter.svg" alt="#" />
+          <div class="col-md-4 p-md-2 foo pb-md-1 pb-sm-5">
+            <img width="43px" src="facebook .svg" alt="#" />
+            <img width="43px" src="instagram.svg" alt="#" />
+            <img width="43px" src="twitter.svg" alt="#" />
           </div>
         </div>
       </div>
@@ -192,6 +288,7 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
     <script type="module" src="app.js"></script>
   </body>
 </html>
