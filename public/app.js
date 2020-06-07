@@ -54,7 +54,7 @@ formKorisnik.addEventListener("submit", (e) => {
 
 // broj odigranih partija
 
-localStorage.setItem("broj_igara", null);
+localStorage.setItem("broj_igara", "0");
 // console.log(zgeo.uzmiBrIgara(localStorage.korisnik));
 
 if (localStorage.korisnik) {
@@ -203,7 +203,7 @@ igrajBtn.addEventListener("click", (e) => {
           veliko == undefined ||
           veliko.startsWith(pocetnoSlovo) == false
         ) {
-          i.value += " +0";
+          i.value += "+0";
         }
         if (veliko != "" && veliko.startsWith(pocetnoSlovo)) {
           zgeo.proveriPojam(veliko, i.id, (data) => {

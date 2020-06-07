@@ -24,6 +24,7 @@ let waitingPlayer = null;
 nsp.on("connection", (sock) => {
   // on connect
   console.log("Someone connected: " + sock.id);
+  // upari igrace
   if (waitingPlayer) {
     // start a game
     new Game(waitingPlayer, sock);
@@ -45,6 +46,7 @@ nsp.on("connection", (sock) => {
     console.log(data);
     let { input, id, player } = data;
     console.log(input, id, player);
+    nsp.emit("input", input);
   });
 
   // on disconnect

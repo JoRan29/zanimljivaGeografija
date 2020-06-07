@@ -2,7 +2,6 @@ class Game {
   constructor(p1, p2) {
     this._players = [p1, p2];
     this._turns = [null, null];
-
     this._sendToPlayers("Igra Počinje!");
 
     // this._startCountdown();
@@ -37,6 +36,10 @@ class Game {
       this._turns = [null, null];
       this._sendToPlayers("Sledeci potez!");
     }
+  }
+
+  _proveriObjekat(obj) {
+    let { input, id, player } = obj;
   }
 }
 
