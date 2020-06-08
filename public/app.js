@@ -24,6 +24,7 @@ let skor = document.querySelector("#skor");
 let username = document.querySelector("#username");
 let avatar = document.getElementById("avatar");
 let computer = document.getElementById("computer");
+let dodato = document.querySelector("#dodato");
 
 // korisnk lokalna memorija
 let korisnik = () => {
@@ -87,10 +88,18 @@ formPredlog.addEventListener("submit", (e) => {
     zgeo.proveriPojam(predlogCap, kategorija, (data) => {
       if (data) {
         zgeo.dodajPojam(predlogCap, kategorija);
-        console.log("Novi pojam dodat u bazu! " + predlogCap);
+        // console.log("Novi pojam dodat u bazu! " + predlogCap);
+        dodato.innerHTML = `Pojam "${predlogCap}" uspešno dodat u bazu!`;
+        setTimeout(() => {
+          dodato.innerHTML = "";
+        }, 1900);
       } else {
-        console.log("Pojam vec postoji!");
-        alert("Pojam vec postoji!");
+        dodato.innerHTML = `Pojam ${predlogCap} već postoji!`;
+        setTimeout(() => {
+          dodato.innerHTML = "";
+        }, 1900);
+        // console.log("Pojam vec postoji!");
+        // alert("Pojam vec postoji!");
       }
     });
   } else {
