@@ -94,7 +94,7 @@ formPredlog.addEventListener("submit", (e) => {
           dodato.innerHTML = "";
         }, 1900);
       } else {
-        dodato.innerHTML = `Pojam ${predlogCap} već postoji!`;
+        dodato.innerHTML = `Pojam "${predlogCap}" već postoji!`;
         setTimeout(() => {
           dodato.innerHTML = "";
         }, 1900);
@@ -315,6 +315,7 @@ igrajBtn.addEventListener("click", (e) => {
         // Skor
         let win = new Audio("win.mp3");
         let sad = new Audio("sad.mp3");
+        let tie = new Audio("tie.mp3");
         setTimeout(() => {
           if (skorKorisnik > kompSkor) {
             skor.innerHTML =
@@ -333,6 +334,7 @@ igrajBtn.addEventListener("click", (e) => {
               `${localStorage.korisnik} je osvojio/la ${skorKorisnik} poena!` +
               `<div> Kompjuter je osvojio ${kompSkor} poena!</div>` +
               `<div id="rez">Rezultat je nerešen - Pokušajte ponovo!</div>`;
+            tie.play();
           }
         }, 700);
       }, 1000);

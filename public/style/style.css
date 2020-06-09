@@ -212,6 +212,10 @@ body ul {
   font-size: 40px;
   font-weight: bold;
   border-radius: 2px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .game #igraKorisnik {
@@ -242,6 +246,10 @@ body ul {
 }
 
 #skor {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   background-color: rgba(255, 0, 0, 0.901);
   min-height: 454px;
   display: -webkit-box;
@@ -335,6 +343,13 @@ body ul {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+#TopLista {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 #TopLista h3 {

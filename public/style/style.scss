@@ -139,6 +139,7 @@ body {
     font-size: 40px;
     font-weight: bold;
     border-radius: 2px;
+    user-select: none;
   }
   #igraKorisnik {
     pointer-events: none;
@@ -165,6 +166,7 @@ body {
 }
 
 #skor {
+  user-select: none;
   background-color: rgba(255, 0, 0, 0.901);
   min-height: 454px;
   display: flex;
@@ -230,6 +232,7 @@ body {
 }
 
 #TopLista {
+  user-select: none;
   h3 {
     text-decoration: underline;
   }
