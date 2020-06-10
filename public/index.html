@@ -9,6 +9,10 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+    />
     <link rel="image_src" href="thumbnail.jpg" />
     <link rel="icon" href="icon.png" />
     <link rel="stylesheet" href="style/style.css" />
@@ -19,7 +23,9 @@
       <div class="row align-items-start">
         <div class="col-md-4 logo p-3">
           <img width="100px" src="world-lr.webp" alt="" />
-          <h3 class="pb-4">Zanimljiva Geografija</h3>
+          <h3 class="pb-4 animate__animated animate__slideInDown">
+            Zanimljiva Geografija
+          </h3>
           <p>
             <!-- Radovi u toku! -->
           </p>
@@ -136,7 +142,13 @@
             /></a>
           </div>
           <br />
-          <input type="submit" value="Igraj!" id="igrajBtn" /> <br />
+          <input
+            class="animate__animated animate__tada animate__delay-2s"
+            type="submit"
+            value="Igraj!"
+            id="igrajBtn"
+          />
+          <br />
           <br />
           <span>SLOVO:</span> <br />
           <div id="slovo">?</div>
