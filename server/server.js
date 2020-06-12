@@ -17,6 +17,9 @@ const io = socketio(server);
 
 const nsp = io.of("/game");
 
+// DOM
+// import { igrajBtn } from "../public/game.js";
+
 // player
 let waitingPlayer = null;
 
@@ -27,7 +30,14 @@ nsp.on("connection", (sock) => {
   // upari igrace
   if (waitingPlayer) {
     // start a game
-    new Game(waitingPlayer, sock);
+    let game = new Game(waitingPlayer, sock);
+    // slovo
+    sock.emit("randomSlovo", game.randomSlovo());
+    // todo: send same letter to both
+    // countdown
+    sock.emit("countdown", game.startTimeout(60));
+    game._sendToPlayers(game.startTimeout(60));
+    // todo: send same time to both
     // startCountdown();
     waitingPlayer = null;
   } else {

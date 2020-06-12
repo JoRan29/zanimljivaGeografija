@@ -1,11 +1,12 @@
 let ime = document.querySelector("#pozdrav");
 ime.innerHTML = `${localStorage.korisnik}`;
 
-let igrajBtn = document.querySelector("#igrajBtn");
+export let igrajBtn = document.querySelector("#igrajBtn");
 let formKorisnik = document.querySelector("#igraKorisnik");
 let igraInput = document.querySelectorAll(".igraInput");
 let obavestenje = document.querySelector("#obavestenje");
-let reka = document.querySelector("#Reka");
+// let reka = document.querySelector("#Reka");
+let slovo = document.querySelector("#slovo");
 console.log(igraInput);
 
 // const addBtnListeners = () => {
@@ -33,6 +34,16 @@ setTimeout(() => {
     poruka: `Korisnik ${localStorage.korisnik} je povezan!`,
   });
 }, 100);
+// slovo
+sock.on("randomSlovo", (data) => {
+  console.log(data);
+  slovo.innerHTML = data;
+});
+// countdown
+sock.on("countdown", (data) => {
+  console.log(data);
+  igrajBtn.innerHTML = data;
+});
 // disconnect
 sock.on("disconnect", () => {
   console.log("Disconnected from server!");

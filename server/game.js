@@ -2,9 +2,8 @@ class Game {
   constructor(p1, p2) {
     this._players = [p1, p2];
     this._turns = [null, null];
+    // this.zgeografija = db.collection("pojmovi");
     this._sendToPlayers("Igra Počinje!");
-
-    // this._startCountdown();
 
     this._players.forEach((player, i) => {
       player.on("turn", (turn) => {
@@ -36,6 +35,29 @@ class Game {
       this._turns = [null, null];
       this._sendToPlayers("Sledeci potez!");
     }
+  }
+
+  startTimeout(broj) {
+    let clock = setInterval(() => {
+      broj--;
+      if (broj > 0) {
+        console.log(broj);
+        return broj;
+      }
+      if (broj === 0) {
+        console.log("Vreme je isteklo!");
+        clearInterval(clock);
+        return "Kraj!";
+      }
+    }, 1000);
+  }
+
+  randomSlovo() {
+    let abeceda = "ABCČĆDĐEFGHIJKLMNOPRSTUVZŽ".split("");
+    abeceda.push("Dž", "Nj", "Lj");
+    let pocetnoSlovo = abeceda[Math.floor(Math.random() * abeceda.length)];
+    console.log(pocetnoSlovo);
+    return pocetnoSlovo;
   }
 
   _proveriObjekat(obj) {
