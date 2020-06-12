@@ -14,6 +14,7 @@
 
 #### U toku...
 - Igra protiv drugog igrača!
-- Top lista po broju poena i broju odigranih partija
+- Top lista po broju poena
+- Top lista po broju odigranih partija
 - ....
 
