@@ -167,7 +167,7 @@ igrajBtn.addEventListener("click", (e) => {
   igrajBtn.style.pointerEvents = "none";
   igraKorisnik.style.pointerEvents = "auto";
   igraKorisnik.reset();
-  let snd = new Audio("beep.mp3");
+  let snd = new Audio("./sound/beep.mp3");
   // Zavrsi igru
   zavrsiIgru.addEventListener("click", (e) => {
     e.preventDefault();
@@ -313,9 +313,9 @@ igrajBtn.addEventListener("click", (e) => {
         }, 300);
         // Dodaj rez
         // Skor
-        let win = new Audio("win.mp3");
-        let sad = new Audio("sad.mp3");
-        let tie = new Audio("tie.mp3");
+        let win = new Audio("./sound/win.mp3");
+        let sad = new Audio("./sound/sad.mp3");
+        let tie = new Audio("./sound/tie.mp3");
         setTimeout(() => {
           if (skorKorisnik > kompSkor) {
             skor.innerHTML =
