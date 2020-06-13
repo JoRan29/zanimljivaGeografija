@@ -22,47 +22,62 @@
       </h2>
       <span id="obavestenje"></span>
     </div>
-    <div class="game game1vs1">
-      <!-- Play Btn + Countdown -->
-      <input type="submit" value="Igraj!" id="igrajBtn" /> <br />
-      <br />
-      <span>SLOVO:</span> <br />
-      <div id="slovo">?</div>
-      <!-- Form -->
-      <form action="" id="igraKorisnik">
-        <div class="vs"></div>
-        <input type="text" placeholder="Država" class="igraInput" id="Država" />
-        <br />
-        <input type="text" placeholder="Grad" class="igraInput" id="Grad" />
-        <br />
-        <input type="text" placeholder="Reka" class="igraInput" id="Reka" />
-        <br />
-        <input
-          type="text"
-          placeholder="Planina"
-          class="igraInput"
-          id="Planina"
-        />
-        <br />
-        <input
-          type="text"
-          placeholder="Životinja"
-          class="igraInput"
-          id="Životinja"
-        />
-        <br />
-        <input type="text" placeholder="Biljka" class="igraInput" id="Biljka" />
-        <br />
-        <input
-          type="text"
-          placeholder="Predmet"
-          class="igraInput"
-          id="Predmet"
-        />
-        <br />
-        <input id="zavrsiIgru" type="submit" value="Završi Igru!" />
-      </form>
+    <div class="container">
+      <div class="row">
+        <div class="game game1vs1 col">
+          <!-- Play Btn + Countdown -->
+          <input type="submit" value="Igraj!" id="igrajBtn" /> <br />
+          <br />
+          <span>SLOVO:</span> <br />
+          <div id="slovo">?</div>
+          <!-- Form -->
+          <form action="" id="igraKorisnik">
+            <div class="vs"></div>
+            <input
+              type="text"
+              placeholder="Država"
+              class="igraInput"
+              id="Država"
+            />
+            <br />
+            <input type="text" placeholder="Grad" class="igraInput" id="Grad" />
+            <br />
+            <input type="text" placeholder="Reka" class="igraInput" id="Reka" />
+            <br />
+            <input
+              type="text"
+              placeholder="Planina"
+              class="igraInput"
+              id="Planina"
+            />
+            <br />
+            <input
+              type="text"
+              placeholder="Životinja"
+              class="igraInput"
+              id="Životinja"
+            />
+            <br />
+            <input
+              type="text"
+              placeholder="Biljka"
+              class="igraInput"
+              id="Biljka"
+            />
+            <br />
+            <input
+              type="text"
+              placeholder="Predmet"
+              class="igraInput"
+              id="Predmet"
+            />
+            <br />
+            <input id="zavrsiIgru" type="submit" value="Završi Igru!" />
+          </form>
+        </div>
+      </div>
     </div>
+
     <script src="/socket.io/socket.io.js"></script>
     <script type="module" src="game.js"></script>
   </body>
