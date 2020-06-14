@@ -77,6 +77,28 @@
         </div>
       </div>
     </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyAxgWyEDjRHNTpP6YaUcA51nKn097BtvuI",
+        authDomain: "zgeografija-69627.firebaseapp.com",
+        databaseURL: "https://zgeografija-69627.firebaseio.com",
+        projectId: "zgeografija-69627",
+        storageBucket: "zgeografija-69627.appspot.com",
+        messagingSenderId: "256439745171",
+        appId: "1:256439745171:web:07c19c5d07630bd56cab66",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      let db = firebase.firestore();
+    </script>
 
     <script src="/socket.io/socket.io.js"></script>
     <script type="module" src="game.js"></script>

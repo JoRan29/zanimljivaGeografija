@@ -32,13 +32,9 @@ nsp.on("connection", (sock) => {
     // start a game
     let game = new Game(waitingPlayer, sock);
     // slovo
-    sock.emit("randomSlovo", game.randomSlovo());
-    // todo: send same letter to both
+    nsp.emit("randomSlovo", game.randomSlovo());
     // countdown
-    sock.emit("countdown", game.startTimeout(60));
-    game._sendToPlayers(game.startTimeout(60));
-    // todo: send same time to both
-    // startCountdown();
+    nsp.emit("countdown", "start");
     waitingPlayer = null;
   } else {
     waitingPlayer = sock;
@@ -57,6 +53,10 @@ nsp.on("connection", (sock) => {
     let { input, id, player } = data;
     console.log(input, id, player);
     nsp.emit("input", input);
+  });
+  // odgovori
+  sock.on("odgovori", (data) => {
+    console.log(data);
   });
 
   // on disconnect
