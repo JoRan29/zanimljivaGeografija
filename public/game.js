@@ -57,6 +57,7 @@ sock.on("randomSlovo", (data) => {
 // countdown
 sock.on("countdown", () => {
   let startTimeout = (broj) => {
+    formKorisnik.style.pointerEvents = "auto";
     let clock = setInterval(() => {
       broj--;
       igrajBtn.value = broj;
@@ -90,7 +91,10 @@ sock.on("countdown", () => {
           }
         });
         console.log(odgovoriKor);
-        sock.emit("odgovori", odgovoriKor);
+        odgovoriKor.push(localStorage.korisnik);
+        setTimeout(() => {
+          sock.emit("odgovori", odgovoriKor);
+        }, 1000);
       }
     }, 1000);
   };

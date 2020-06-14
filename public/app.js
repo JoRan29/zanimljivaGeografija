@@ -123,6 +123,8 @@ if (
   igrajBtn.style.pointerEvents = "none";
   igrajBtn.style.backgroundColor = "gray";
   avatar.style.pointerEvents = "none";
+  avatar.style.opacity = "0.5";
+  avatar.parentElement.removeAttribute("href");
   computer.style.pointerEvents = "none";
   alert(`Ne mozete pristupiti stranici bez korisnickog imena!`);
 }
