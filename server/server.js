@@ -55,8 +55,14 @@ nsp.on("connection", (sock) => {
     nsp.emit("input", input);
   });
   // odgovori
+  let odg;
   sock.on("odgovori", (data) => {
+    odg = data;
     console.log(data);
+    console.log(odg[0]);
+    // if (data[0].length > data[1].length) {
+    //   alert("Pobednik je" + data[0]);
+    // }
   });
 
   // on disconnect

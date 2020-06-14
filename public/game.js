@@ -98,7 +98,7 @@ sock.on("countdown", () => {
       }
     }, 1000);
   };
-  console.log(startTimeout(30));
+  startTimeout(30);
 });
 // disconnect
 sock.on("disconnect", () => {

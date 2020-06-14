@@ -136,12 +136,18 @@ export class Geografija {
   }
   async dodajRez(poeni) {
     let date = new Date();
+    let brojIgara;
+    if (!localStorage.broj_igara) {
+      brojIgara = 1;
+    } else {
+      brojIgara = parseInt(localStorage.broj_igara) + 1;
+    }
 
     let rez = {
       username: this._korisnik,
       datum: firebase.firestore.Timestamp.fromDate(date),
       broj_poena: poeni,
-      broj_igara: parseInt(localStorage.broj_igara) + 1,
+      broj_igara: brojIgara,
     };
 
     let response = await this.rezultati.add(rez);

@@ -55,13 +55,19 @@ formKorisnik.addEventListener("submit", (e) => {
 
 // broj odigranih partija
 
-localStorage.setItem("broj_igara", "0");
+localStorage.setItem("broj_igara", 0);
 // console.log(zgeo.uzmiBrIgara(localStorage.korisnik));
 
 if (localStorage.korisnik) {
   zgeo.uzmiBrIgara(localStorage.korisnik, (data) => {
+    let brIgara;
+    if (!data || data === NaN) {
+      brIgara = 0;
+    } else {
+      brIgara = data;
+    }
     console.log(data);
-    let brIgara = data;
+    console.log(brIgara);
     localStorage.setItem("broj_igara", brIgara);
   });
 }
