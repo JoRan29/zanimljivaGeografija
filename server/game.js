@@ -2,7 +2,6 @@ class Game {
   constructor(p1, p2) {
     this._players = [p1, p2];
     this._turns = [null, null];
-    // this.zgeografija = db.collection("pojmovi");
     this._sendToPlayers("Igra Počinje!");
 
     this._players.forEach((player, i) => {

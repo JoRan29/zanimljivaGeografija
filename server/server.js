@@ -17,9 +17,6 @@ const io = socketio(server);
 
 const nsp = io.of("/game");
 
-// DOM
-// import { igrajBtn } from "../public/game.js";
-
 // player
 let waitingPlayer = null;
 
@@ -29,12 +26,19 @@ nsp.on("connection", (sock) => {
   console.log("Someone connected: " + sock.id);
   // upari igrace
   if (waitingPlayer) {
+    console.log(waitingPlayer.id, sock.id);
     // start a game
     let game = new Game(waitingPlayer, sock);
     // slovo
     nsp.emit("randomSlovo", game.randomSlovo());
     // countdown
     nsp.emit("countdown", "start");
+    // br poena
+    sock.on("poeni", (data) => {
+      console.log(data);
+      nsp.emit("rez", data);
+    });
+    //
     waitingPlayer = null;
   } else {
     waitingPlayer = sock;
@@ -52,19 +56,15 @@ nsp.on("connection", (sock) => {
     console.log(data);
     let { input, id, player } = data;
     console.log(input, id, player);
-    nsp.emit("input", input);
+    // nsp.emit("input", input);
+    nsp.emit("input", data);
   });
   // odgovori
   let odg;
   sock.on("odgovori", (data) => {
     odg = data;
     console.log(data);
-    console.log(odg[0]);
-    // if (data[0].length > data[1].length) {
-    //   alert("Pobednik je" + data[0]);
-    // }
   });
-
   // on disconnect
   sock.on("disconnect", () => {
     console.log("User has disconnected!");

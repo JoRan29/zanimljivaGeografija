@@ -4,10 +4,11 @@ ime.innerHTML = `${localStorage.korisnik}`;
 export let igrajBtn = document.querySelector("#igrajBtn");
 let formKorisnik = document.querySelector("#igraKorisnik");
 let igraInput = document.querySelectorAll(".igraInput");
+let igrajPonovo = document.querySelector("#igrajPonovo");
 let obavestenje = document.querySelector("#obavestenje");
-// let reka = document.querySelector("#Reka");
+let listaRez = document.querySelector("#listaRez");
 let slovo = document.querySelector("#slovo");
-console.log(igraInput);
+// console.log(igraInput);
 
 // korisnik
 let korisnik = () => {
@@ -21,14 +22,6 @@ let korisnik = () => {
 import { Geografija } from "./classGeo.js";
 let zgeo = new Geografija(korisnik(), "Drzava");
 
-// const addBtnListeners = () => {
-//   [drzava, grad, reka].forEach((id) => {
-//     const input = igraInput;
-//   });
-// };
-
-// socket.io
-// const sock = io();
 const sock = io("/game");
 let odgovoriKor = [];
 let pocetnoSlovo;
@@ -45,7 +38,6 @@ sock.emit(
 setTimeout(() => {
   sock.emit("event", {
     korisnik: localStorage.korisnik,
-    poruka: `Korisnik ${localStorage.korisnik} je povezan!`,
   });
 }, 100);
 // slovo
@@ -94,11 +86,26 @@ sock.on("countdown", () => {
         odgovoriKor.push(localStorage.korisnik);
         setTimeout(() => {
           sock.emit("odgovori", odgovoriKor);
+          sock.emit("poeni", odgovoriKor.length - 1);
         }, 1000);
       }
     }, 1000);
   };
-  startTimeout(30);
+  startTimeout(10);
+});
+
+let displayResult = (result) => {
+  let li = document.createElement("li");
+  li.innerHTML = result;
+  return li;
+};
+
+sock.on("rez", (data) => {
+  console.log(data);
+  let rez = displayResult(data);
+  listaRez.style.fontSize = "30px";
+  listaRez.style.backgroundColor = "red";
+  listaRez.appendChild(rez);
 });
 // disconnect
 sock.on("disconnect", () => {
@@ -128,7 +135,6 @@ sock.on("input", (data) => {
 });
 
 // form
-
 igrajBtn.style.pointerEvents = "auto";
 igrajBtn.style.userSelect = "auto";
 
@@ -137,3 +143,7 @@ igrajBtn.addEventListener("click", () => {
 });
 
 formKorisnik.addEventListener("submit", onFormSub);
+
+igrajPonovo.addEventListener("click", () => {
+  location.reload();
+});
