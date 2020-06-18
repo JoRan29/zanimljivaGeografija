@@ -42,7 +42,7 @@
       }
 
       footer {
-        border-top: solid 3px rgba(255, 0, 0, 0.623);
+        border-top: solid 3px rgb(168, 168, 168);
         background-image: url(https://www.digitalartsonline.co.uk/cmsdata/slideshow/3476206/MapPatternFinal1.jpg);
         width: 100%;
         height: 100px;
@@ -61,17 +61,31 @@
         text-shadow: 2px 2px rgb(168, 168, 168);
         text-decoration: none;
       }
+
+      span {
+        background-color: greenyellow;
+        padding: 5px;
+        border-radius: 5px;
+        border: solid 3px rgb(168, 168, 168);
+        box-shadow: 2px 2px rgba(39, 39, 39, 0.596);
+      }
     </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+    />
   </head>
   <body>
     <div>
-      <h2>404</h2>
+      <h2 class="animate__animated animate__bounceIn animate__delay-1s">404</h2>
       <p>
         Ups - Stranica ne postoji! :O
       </p>
     </div>
-    <footer>
-      <a href="./index.html">Početna stranica</a>
+    <footer class="animate__animated animate__pulse animate__delay-2s">
+      <a href="./index.html">
+        <span>Početna stranica</span>
+      </a>
     </footer>
   </body>
 </html>
