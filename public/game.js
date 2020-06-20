@@ -87,6 +87,7 @@ sock.on("countdown", () => {
         setTimeout(() => {
           sock.emit("odgovori", odgovoriKor);
           sock.emit("poeni", odgovoriKor.length - 1);
+          sock.emit("turn", (odgovoriKor.length - 1) * 10);
         }, 1000);
       }
     }, 1000);
@@ -100,13 +101,13 @@ let displayResult = (result) => {
   return li;
 };
 
-sock.on("rez", (data) => {
-  console.log(data);
-  let rez = displayResult(data);
-  listaRez.style.fontSize = "30px";
-  listaRez.style.backgroundColor = "red";
-  listaRez.appendChild(rez);
-});
+// sock.on("rez", (data) => {
+//   console.log(data);
+//   let rez = displayResult(data);
+//   listaRez.style.fontSize = "30px";
+//   listaRez.style.backgroundColor = "red";
+//   listaRez.appendChild(rez);
+// });
 // disconnect
 sock.on("disconnect", () => {
   console.log("Disconnected from server!");
@@ -133,6 +134,16 @@ sock.on("message", writeEvent);
 sock.on("input", (data) => {
   console.log(data);
 });
+
+// rezultat
+const writeResult = (text) => {
+  let rez = displayResult(text);
+  listaRez.style.fontSize = "30px";
+  listaRez.style.backgroundColor = "red";
+  listaRez.appendChild(rez);
+};
+
+sock.on("result", writeResult);
 
 // form
 igrajBtn.style.pointerEvents = "auto";

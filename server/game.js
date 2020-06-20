@@ -21,19 +21,36 @@ class Game {
     });
   }
 
+  _sendResult(res) {
+    this._players.forEach((p) => {
+      p.emit("result", res);
+    });
+  }
+
   _onTurn(playerIndex, turn) {
     this._turns[playerIndex] = turn;
-    this._sendToPlayer(playerIndex, `You selected ${turn}`);
+    this._sendToPlayer(playerIndex, `Osvojili ste ${turn} poena!`);
+
+    this._checkGameOver();
   }
 
   _checkGameOver() {
     const turns = this._turns;
 
     if (turns[0] && turns[1]) {
-      this._sendToPlayers("Igraj je zavrsena!" + turns.join(":"));
+      this._sendResult("Igra je završena!" + "</br>" + turns.join(":"));
+      if (turns[0] > turns[1] || !turns[1]) {
+        this._sendResult(`Pobednik je...Player 1`);
+      } else if (turns[1] > turns[0] || !turns[0]) {
+        this._sendResult(`Pobednik je...Player 2`);
+      } else {
+        this._sendResult(`Nerešeno!`);
+      }
       this._turns = [null, null];
-      this._sendToPlayers("Sledeci potez!");
     }
+    // if (!turns[0] && !turns[1]) {
+    //   this._sendResult(`Nerešeno!`);
+    // }
   }
 
   startTimeout(broj) {
