@@ -11,9 +11,9 @@
 - Odabir i promena korisničkog imena
 - Predlog i dodavanje novih pojmova 
 - Top lista po broju ubačenih pojmova
+- Igra protiv drugog igrača!
 
 #### U toku...
-- Igra protiv drugog igrača!
 - Top lista po broju poena
 - Top lista po broju odigranih partija
 - ....
