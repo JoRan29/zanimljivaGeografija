@@ -1,7 +1,7 @@
 # *Zanimljiva Geografija*
 ## Edukativna društvena igra za jednog ili više igrača - u digitalnom formatu!
 
-### In Progress... (JS, Node.js, Socket.io, Firebase, Bootstrap 4, Sass, Animate.css)
+### (JS, Node.js, Socket.io, Firebase, Bootstrap 4, Sass, Animate.css)
 
 ##### Preview 
 ![Zanimljiva Geografija - First Page](/server/zgeo.png)
