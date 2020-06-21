@@ -8,7 +8,6 @@ let igrajPonovo = document.querySelector("#igrajPonovo");
 let obavestenje = document.querySelector("#obavestenje");
 let listaRez = document.querySelector("#listaRez");
 let slovo = document.querySelector("#slovo");
-// console.log(igraInput);
 
 // korisnik
 let korisnik = () => {
@@ -30,16 +29,12 @@ let pocetnoSlovo;
 sock.on("connect", () => {
   console.log("Connected to server!");
 });
-sock.emit(
-  "clientEvent",
-  `Sent an event from the client ${localStorage.korisnik}!`
-);
-// custom event
-setTimeout(() => {
-  sock.emit("event", {
-    korisnik: localStorage.korisnik,
-  });
-}, 100);
+
+// ime korisnika
+sock.emit("event", {
+  korisnik: localStorage.korisnik,
+});
+
 // slovo
 sock.on("randomSlovo", (data) => {
   console.log(data);
@@ -54,13 +49,14 @@ sock.on("countdown", () => {
       broj--;
       igrajBtn.value = broj;
       if (broj > 0) {
-        console.log(broj);
+        igrajPonovo.style.pointerEvents = "none";
         return broj;
       }
       if (broj === 0) {
         console.log("Vreme je isteklo!");
+        igrajPonovo.style.pointerEvents = "auto";
         clearInterval(clock);
-        console.log(igraInput);
+        window.scrollTo(0, 800);
         igraInput.forEach((i) => {
           let veliko = zgeo.veliko(i.value);
           if (
@@ -78,6 +74,7 @@ sock.on("countdown", () => {
               } else {
                 console.log("Pogodak!");
                 odgovoriKor.push(veliko + " " + i.id);
+                i.value += " +10";
               }
             });
           }
@@ -87,12 +84,17 @@ sock.on("countdown", () => {
         setTimeout(() => {
           sock.emit("odgovori", odgovoriKor);
           sock.emit("poeni", odgovoriKor.length - 1);
-          sock.emit("turn", (odgovoriKor.length - 1) * 10);
+          sock.emit("name", localStorage.korisnik);
+          if (odgovoriKor.length - 1 > 0) {
+            sock.emit("turn", (odgovoriKor.length - 1) * 10);
+          } else if (odgovoriKor.length == 1) {
+            sock.emit("turn", 0);
+          }
         }, 1000);
       }
     }, 1000);
   };
-  startTimeout(10);
+  startTimeout(20);
 });
 
 let displayResult = (result) => {
@@ -101,13 +103,6 @@ let displayResult = (result) => {
   return li;
 };
 
-// sock.on("rez", (data) => {
-//   console.log(data);
-//   let rez = displayResult(data);
-//   listaRez.style.fontSize = "30px";
-//   listaRez.style.backgroundColor = "red";
-//   listaRez.appendChild(rez);
-// });
 // disconnect
 sock.on("disconnect", () => {
   console.log("Disconnected from server!");
@@ -116,18 +111,6 @@ sock.on("disconnect", () => {
 // obavestenje
 const writeEvent = (text) => {
   obavestenje.innerHTML = text;
-};
-
-const onFormSub = (e) => {
-  e.preventDefault();
-  igraInput.forEach((element) => {
-    sock.emit("input", {
-      input: element.value,
-      id: element.id,
-      player: localStorage.korisnik,
-    });
-  });
-  formKorisnik.reset();
 };
 
 sock.on("message", writeEvent);
@@ -152,8 +135,6 @@ igrajBtn.style.userSelect = "auto";
 igrajBtn.addEventListener("click", () => {
   formKorisnik.style.pointerEvents = "auto";
 });
-
-formKorisnik.addEventListener("submit", onFormSub);
 
 igrajPonovo.addEventListener("click", () => {
   location.reload();

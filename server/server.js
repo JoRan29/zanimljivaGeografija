@@ -24,6 +24,15 @@ let waitingPlayer = null;
 nsp.on("connection", (sock) => {
   // on connect
   console.log("Someone connected: " + sock.id);
+
+  // ime korisnika
+  let korisnik;
+  sock.on("event", (data) => {
+    console.log(data);
+    korisnik = data;
+    console.log(korisnik);
+  });
+
   // upari igrace
   if (waitingPlayer) {
     console.log(waitingPlayer.id, sock.id);
@@ -44,21 +53,7 @@ nsp.on("connection", (sock) => {
     waitingPlayer = sock;
     waitingPlayer.emit("message", "Čekamo protivnika...");
   }
-  // custom event
-  sock.on("clientEvent", (data) => {
-    console.log(data);
-  });
-  //event
-  sock.on("event", (data) => {
-    console.log(data);
-  });
-  sock.on("input", (data) => {
-    console.log(data);
-    let { input, id, player } = data;
-    console.log(input, id, player);
-    // nsp.emit("input", input);
-    nsp.emit("input", data);
-  });
+
   // odgovori
   let odg;
   sock.on("odgovori", (data) => {

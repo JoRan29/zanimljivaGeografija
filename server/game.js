@@ -40,17 +40,16 @@ class Game {
     if (turns[0] && turns[1]) {
       this._sendResult("Igra je završena!" + "</br>" + turns.join(":"));
       if (turns[0] > turns[1] || !turns[1]) {
-        this._sendResult(`Pobednik je...Player 1`);
+        this._sendResult(`Pobednik je...`);
       } else if (turns[1] > turns[0] || !turns[0]) {
-        this._sendResult(`Pobednik je...Player 2`);
+        this._sendResult(`Pobednik je...`);
+      } else if (turns[0].length == 0 && turns[1].length == 0) {
+        this._sendResult(`Nerešeno!`);
       } else {
         this._sendResult(`Nerešeno!`);
       }
       this._turns = [null, null];
     }
-    // if (!turns[0] && !turns[1]) {
-    //   this._sendResult(`Nerešeno!`);
-    // }
   }
 
   startTimeout(broj) {
@@ -74,10 +73,6 @@ class Game {
     let pocetnoSlovo = abeceda[Math.floor(Math.random() * abeceda.length)];
     console.log(pocetnoSlovo);
     return pocetnoSlovo;
-  }
-
-  _proveriObjekat(obj) {
-    let { input, id, player } = obj;
   }
 }
 
