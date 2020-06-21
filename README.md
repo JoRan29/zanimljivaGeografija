@@ -1,4 +1,4 @@
-# *Zanimljiva Geografija*
+# *Zanimljiva Geografija* - [Klikni ovde za igru!](https://zgeografija-69627.firebaseapp.com/)
 ## Edukativna društvena igra za jednog ili više igrača - u digitalnom formatu!
 
 ### (JS, Node.js, Socket.io, Firebase, Bootstrap 4, Sass, Animate.css)
