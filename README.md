@@ -1,7 +1,7 @@
-# *Zanimljiva Geografija*
+# *Zanimljiva Geografija* - [Klikni ovde za igru!](https://zgeografija-69627.firebaseapp.com/)
 ## Edukativna društvena igra za jednog ili više igrača - u digitalnom formatu!
 
-### In Progress... (JS, Node.js, Socket.io, Firebase, Bootstrap 4, Sass, Animate.css)
+### (JS, Node.js, Socket.io, Firebase, Bootstrap 4, Sass, Animate.css)
 
 ##### Preview 
 ![Zanimljiva Geografija - First Page](/server/zgeo.png)
@@ -11,9 +11,9 @@
 - Odabir i promena korisničkog imena
 - Predlog i dodavanje novih pojmova 
 - Top lista po broju ubačenih pojmova
+- Igra protiv drugog igrača!
 
 #### U toku...
-- Igra protiv drugog igrača!
 - Top lista po broju poena
 - Top lista po broju odigranih partija
 - ....
