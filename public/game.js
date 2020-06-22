@@ -1,7 +1,9 @@
 let ime = document.querySelector("#pozdrav");
 ime.innerHTML = `${localStorage.korisnik}`;
 
-export let igrajBtn = document.querySelector("#igrajBtn");
+let igrajBtn = document.querySelector("#igrajBtn");
+igrajBtn.style.userSelect = "none";
+igrajBtn.style.pointerEvents = "none";
 let formKorisnik = document.querySelector("#igraKorisnik");
 let igraInput = document.querySelectorAll(".igraInput");
 let igrajPonovo = document.querySelector("#igrajPonovo");

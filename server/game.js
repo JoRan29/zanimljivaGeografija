@@ -40,9 +40,9 @@ class Game {
     if (turns[0] && turns[1]) {
       this._sendResult("Igra je završena!" + "</br>" + turns.join(":"));
       if (turns[0] > turns[1] || !turns[1]) {
-        this._sendResult(`Pobednik je...`);
+        this._sendResult(`Pobednik je osvojio ${turns[0]} poena!`);
       } else if (turns[1] > turns[0] || !turns[0]) {
-        this._sendResult(`Pobednik je...`);
+        this._sendResult(`Pobednik je osvojio ${turns[1]} poena!`);
       } else if (turns[0].length == 0 && turns[1].length == 0) {
         this._sendResult(`Nerešeno!`);
       } else {
