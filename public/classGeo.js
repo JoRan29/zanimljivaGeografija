@@ -162,7 +162,7 @@ export class Geografija {
       .get()
       .then((s) => {
         s.forEach((doc) => {
-          console.log(doc.data().broj_igara);
+          // console.log(doc.data().broj_igara);
           rez = doc.data().broj_igara;
         });
         call(rez);

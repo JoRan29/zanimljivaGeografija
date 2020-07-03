@@ -66,8 +66,8 @@ if (localStorage.korisnik) {
     } else {
       brIgara = data;
     }
-    console.log(data);
-    console.log(brIgara);
+    // console.log(data);
+    // console.log(brIgara);
     localStorage.setItem("broj_igara", brIgara);
   });
 }
@@ -225,17 +225,17 @@ igrajBtn.addEventListener("click", (e) => {
         if (veliko != "" && veliko.startsWith(pocetnoSlovo)) {
           zgeo.proveriPojam(veliko, i.id, (data) => {
             if (data) {
-              console.log("Netacno!");
+              // console.log("Netacno!");
               i.value += " +0";
             } else {
-              console.log("Pogodak!");
+              // console.log("Pogodak!");
               odgovoriKor.push(veliko + " " + i.id);
             }
           });
         }
       });
-      console.log(odgovoriKomp);
-      console.log(odgovoriKor);
+      // console.log(odgovoriKomp);
+      // console.log(odgovoriKor);
       // Racunanje rezultata
       window.scrollTo(0, 750);
       skor.innerHTML = `Računamo konačan rezultat...`;
